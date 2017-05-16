@@ -36,7 +36,7 @@ def processRequest(req):
 		speech = "https://www.google.es/search?q=mapa+barcelona&espv=2&biw=1366&bih=662&source=lnms&tbm=isch&sa=X&ved=0ahUKEwi_9c7pi-DRAhVH6GMKHbBOD4YQ_AUIBygC#imgrc=WEoA_MiNn50OpM%3A"
 		res = makeWebhookResult(speech)
 		return res
-	elif req.get("result").get("action") == "Gastos":
+	elif req.get("result").get("action") == "Cost":
 		speech = "ciao giacomo, the pizza margherita costs 3,90 Euros"
 		res = makeWebhookResult(speech)
 		return res
