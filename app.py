@@ -32,18 +32,15 @@ def webhook():
 
 
 def processRequest(req):
-	if req.get("result").get("action") == "Posicion":
-		speech = "https://www.google.es/search?q=mapa+barcelona&espv=2&biw=1366&bih=662&source=lnms&tbm=isch&sa=X&ved=0ahUKEwi_9c7pi-DRAhVH6GMKHbBOD4YQ_AUIBygC#imgrc=WEoA_MiNn50OpM%3A"
-		res = makeWebhookResult(speech)
-		return res
-	elif req.get("result").get("action") == "Gastos":
-		speech = "Has gastado X Euros"
-		res = makeWebhookResult(speech)
-		return res
-	else:
-		return {}
+	 if req.get("result").get("action") != "shipping.cost":
+        return {}
+    result = req.get("result")
+    parameters = result.get("parameters")
+    zone = parameters.get("shipping-zone")
 
+    cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
 
+    speech = "The cost of shipping to " + zone + " is " + str(cost[zone]) + " euros."
 
 def makeWebhookResult(speech):
     print("Response:")
