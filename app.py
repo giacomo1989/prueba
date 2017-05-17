@@ -32,16 +32,22 @@ def webhook():
 
 
 def processRequest(req):
-	if req.get("result").get("action") == "Posicion":
-		speech = "https://www.google.es/search?q=mapa+barcelona&espv=2&biw=1366&bih=662&source=lnms&tbm=isch&sa=X&ved=0ahUKEwi_9c7pi-DRAhVH6GMKHbBOD4YQ_AUIBygC#imgrc=WEoA_MiNn50OpM%3A"
+	if req.get("result").get("action") == "Cost":
+		result = req.get("result")
+		parameters = result.get("parameters")
+		zone = parameters.get("pizza")
+		cost = {'margherita':3.50, 
+			'diavola':5.50, 
+			'prosciutto and funghi':6.00, 
+			'tonno and cipolla':6.90, 
+			'capricciosa':5.50}
+		speech = "The price of " +zone+ " is "+str(cost[zone])+ " euro"
 		res = makeWebhookResult(speech)
 		return res
-	elif req.get("result").get("action") == "Cost":
-		speech = "ciao giacomo, the pizza margherita costs 3,90 Euros"
-		res = makeWebhookResult(speech)
-		return res
+	
 	else:
 		return {}
+
 
 
 def makeWebhookResult(speech):
