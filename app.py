@@ -35,7 +35,7 @@ def processRequest(req):
 	if req.get("result").get("action") == "Cost":
 		result = req.get("result")
 		parameters = result.get("parameters")
-		zone = parameters.get("pizza")
+		zone = parameters.get("type")
 		cost = {'margherita':3.50, 
 			'diavola':5.50, 
 			'prosciutto and funghi':6.00, 
@@ -47,8 +47,6 @@ def processRequest(req):
 	
 	else:
 		return {}
-
-
 
 def makeWebhookResult(speech):
     print("Response:")
