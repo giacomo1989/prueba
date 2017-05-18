@@ -44,7 +44,7 @@ def processRequest(req):
 		parameters = result.get("parameters")
 		zone = parameters.get("type")
 		
-		valore = data.get("price").get(zone)
+		valore = data.get("precio").get(zone)
 		
 		cost = {'margherita':3.50, 
 			'diavola':5.50, 
