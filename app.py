@@ -44,7 +44,7 @@ def processRequest(req):
 		parameters = result.get("parameters")
 		pizza = parameters.get("type")
 		
-		valore = data.get("precio").get(pizza)
+		valore = data.get("price").get(pizza)
 		
 		speech = "The price of pizza " +pizza+ " is "+valore+" euro" #+str(cost[zone])+ " euro "+valore
 		res = makeWebhookResult(speech)
