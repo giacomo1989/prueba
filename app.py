@@ -50,7 +50,9 @@ def processRequest(req):
 	
 	elif req.get("result").get("action") == "adding":
 		result = req.get("result")
-		speech = "15.20 perfetto funziona" 
+		parameters = result.get("parameters")
+		tonno= parameters.get("fish")
+		speech = "15.40 perfetto funziona" 
 		res = makeWebhookResult(speech)
 		return res
 	else:
