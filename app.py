@@ -48,12 +48,18 @@ def processRequest(req):
 		res = makeWebhookResult(speech)
 		return res
 	
+	if req.get("result").get("action") == "order.pizza":
+		result = req.get("result")
+		parameters = result.get("parameters")
+		pizza = parameters.get("type")
+		
+	
 	elif req.get("result").get("action") == "adding":
 		result = req.get("result")
 		parameters = result.get("parameters")
 		tonno= parameters.get("fish")
 		if tonno == "tonno" :
-			speech = "15.48 perfetto funziona. hai aggiunto alla tua pizza: "+ tonno
+			speech = "17.22 perfetto funziona. hai aggiunto alla tua: "+pizza + tonno
 			res = makeWebhookResult(speech)
 			return res
 		else:
