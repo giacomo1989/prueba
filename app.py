@@ -60,6 +60,20 @@ def processRequest(req):
 		return res
 		#else
 		#	return {}
+	
+	elif req.get("result").get("action") == "adding":
+		result = req.get("result")
+		parameters = result.get("parameters")
+		tonno= parameters.get("fish")
+		#aa=fish[0]
+		#if aa == "tonno" :
+		if tonno == "tonno" :
+			speech = "18.40 perfetto funziona. hai aggiunto alla tua pizza: "+ tonno
+			res = makeWebhookResult(speech)
+			return res
+		else:
+			return{}
+	
 	else:
 		return {}
 
