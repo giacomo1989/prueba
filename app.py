@@ -37,10 +37,6 @@ response = urllib.request.urlopen(url)
 content = response.read()
 data = json.loads(content.decode("utf8"))
 
-if req.get("result").get("action") == "order.pizza":
-	result = req.get("result")
-	parameters = result.get("parameters")
-	pizza = parameters.get("type")
 
 def processRequest(req):
 	if req.get("result").get("action") == "Cost":
@@ -48,7 +44,7 @@ def processRequest(req):
 		parameters = result.get("parameters")
 		pizza = parameters.get("type")
 		valore = data.get("price").get(pizza)
-		speech = "17.33 The price of pizza " +pizza+ " is "+valore+" euro. Bye Bye" 
+		speech = "17.35 The price of pizza " +pizza+ " is "+valore+" euro. Bye Bye" 
 		res = makeWebhookResult(speech)
 		return res
 	
@@ -60,7 +56,7 @@ def processRequest(req):
 		parameters = result.get("parameters")
 		tonno= parameters.get("fish")
 		if tonno == "tonno" :
-			speech = "17.32 perfetto funziona. hai aggiunto alla tua: "+pizza + tonno
+			speech = "17.35 perfetto funziona. hai aggiunto alla tua: "+pizza + tonno
 			res = makeWebhookResult(speech)
 			return res
 		else:
