@@ -44,7 +44,7 @@ def processRequest(req):
 		parameters = result.get("parameters")
 		pizza = parameters.get("type")
 		valore = data.get("price").get(pizza)
-		speech = "18.20 The price of pizza " +pizza+ " is "+valore+" euro. Bye Bye" 
+		speech = "18.30 The price of pizza " +pizza+ " is "+valore+" euro. Bye Bye" 
 		res = makeWebhookResult(speech)
 		return res
 		
@@ -55,7 +55,7 @@ def processRequest(req):
 		tonno = parameters.get("fish")
 		cipolla = parameters.get("vegetables")
 		if tonno == "tonno" and cipolla == "cipolla" :
-			speech = "18.20 perfect, your pizza " +pizza+ " it will be ready in 5 minuts. Bye Bye" 
+			speech = "18.30 perfect, your pizza " +pizza+ " it will be ready in 5 minuts. Bye Bye" 
 			res = makeWebhookResult(speech)
 			return res
 		else
@@ -69,7 +69,7 @@ def processRequest(req):
 		#aa=fish[0]
 		#if aa == "tonno" :
 		if tonno == "tonno" :
-			speech = "18.20 perfetto funziona. hai aggiunto alla tua: "+pizza + tonno
+			speech = "18.30 perfetto funziona. hai aggiunto alla tua: "+pizza + tonno
 			res = makeWebhookResult(speech)
 			return res
 		else:
