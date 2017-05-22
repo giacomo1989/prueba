@@ -52,11 +52,11 @@ def processRequest(req):
 		result = req.get("result")
 		parameters = result.get("parameters")
 		tonno= parameters.get("fish")
-		if tonno == "tonno"
+		if tonno == "tonno" :
 			speech = "15.42 perfetto funziona"+ tonno
 			res = makeWebhookResult(speech)
 			return res
-		else
+		else:
 			return{}
 	else:
 		return {}
