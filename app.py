@@ -47,19 +47,7 @@ def processRequest(req):
 		speech = "15:07 The price of pizza " +pizza+ " is "+valore+" euro. Bye Bye" 
 		res = makeWebhookResult(speech)
 		return res
-	elif req.get("result").get("action") == "order.pizza":
-		result = req.get("result")
-		parameters = result.get("parameters")
-		tonno= parameters.get("fish")
-		aa=parameters["fish"][0]
-		cipolla= parameters.get("vegetables")
-		bb=parameters["vegetables"][0];
-		if aa == " tonno" and bb == "cipolla
-			speech = "15.07 with your extra your pizza is a tonno and cipolla and it will be ready in 5 minuts, bye bye and coming soon"
-			res = makeWebhookResult(speech)
-			return res
-		else
-		return{}
+	
 	else:
 		return {}
 
