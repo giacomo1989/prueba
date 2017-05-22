@@ -48,6 +48,11 @@ def processRequest(req):
 		res = makeWebhookResult(speech)
 		return res
 	
+	elif req.get("result").get("action") == "order.pizza":
+		result = req.get("result")
+		speech = "perfetto funziona" 
+		res = makeWebhookResult(speech)
+		return res
 	else:
 		return {}
 
