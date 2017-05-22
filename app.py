@@ -53,7 +53,7 @@ def processRequest(req):
 		parameters = result.get("parameters")
 		tonno= parameters.get("fish")
 		if tonno == "tonno" :
-			speech = "15.42 perfetto funziona"+ tonno
+			speech = "15.48 perfetto funziona. hai aggiunto alla tua pizza: "+ tonno
 			res = makeWebhookResult(speech)
 			return res
 		else:
