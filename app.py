@@ -68,15 +68,15 @@ def processRequest(req):
 		#aa=fish[0]
 		#if aa == "tonno" :
 		if parameters.get("extra") == "tonno" and parameters.get("vegetables") == "cipolla" :
-			speech = "10.22 con queste aggiunte hai ordinato una tonno and cipolla."
+			speech = "10.30 con queste aggiunte hai ordinato una tonno and cipolla."
 			res = makeWebhookResult(speech)
 			return res
 		elif parameters.get("extra") == "cipolla" and parameters.get("extra") == "tonno" :
-			speech = "10.22 con queste aggiunte hai ordinato una tonno and cipolla."
+			speech = "10.30 Perfect, your pizza "+parameters.get("type")+" with this extra, it's a tonno and cipolla."
 			res = makeWebhookResult(speech)
 			return res
 		elif parameters.get("fish") == "tonno" or parameters.get("extra")== "tonno" :
-			speech = "10.16 perfetto funziona. hai aggiunto alla tua pizza: "+parameters.get("fish")+" "+parameters.get("extra")
+			speech = "10.16 Perfect, your pizza perfetto funziona. hai aggiunto alla tua pizza: "+parameters.get("fish")+" "+parameters.get("extra")
 			res = makeWebhookResult(speech)
 			return res
 		
