@@ -44,7 +44,7 @@ def processRequest(req):
 		parameters = result.get("parameters")
 		pizza = parameters.get("type")
 		valore = data.get("price").get(pizza)
-		speech = "9.56 The price of pizza " +pizza+ " is "+valore+" euro. Bye Bye" 
+		speech = "11.17 The price of pizza " +pizza+ " is "+valore+" euro. Bye Bye" 
 		res = makeWebhookResult(speech)
 		return res
 		
@@ -67,16 +67,21 @@ def processRequest(req):
 		#tonno= parameters.get("fish")
 		#aa=fish[0]
 		#if aa == "tonno" :
-		if parameters.get("extra") == "tonno" and parameters.get("vegetables") == "cipolla" :
-			speech = "10.30 con queste aggiunte hai ordinato una tonno and cipolla."
-			res = makeWebhookResult(speech)
-			return res
-		elif parameters.get("extra") == "cipolla" and parameters.get("extra") == "tonno" :
-			speech = "10.30 Perfect, your pizza "+parameters.get("type")+" with this extra, it's a tonno and cipolla."
-			res = makeWebhookResult(speech)
-			return res
-		elif parameters.get("fish") == "tonno" or parameters.get("extra")== "tonno" :
-			speech = "10.16 Perfect, your pizza perfetto funziona. hai aggiunto alla tua pizza: "+parameters.get("fish")+" "+parameters.get("extra")
+		if parameters.get("type") == "margherita" :
+			if parameters.get("extra") == "tonno" and parameters.get("vegetables") == "cipolla" :
+				speech = "11.17 Perfect, your pizza "+parameters.get("type")+" with this extra, it's a tonno and cipolla."
+				res = makeWebhookResult(speech)
+				return res
+			elif parameters.get("extra") == "cipolla" and parameters.get("extra") == "tonno" :
+				speech = "11.17 Perfect, your pizza "+parameters.get("type")+" with this extra, it's a tonno and cipolla."
+				res = makeWebhookResult(speech)
+				return res
+		
+			else:
+				return{}
+		
+		elif parameters.get("type") == "diavola" :
+			speech = "11.17 Perfect, your pizza "+parameters.get("type")+" with this extra: "+parameters.get("extra")+", "+parameters.get("fish")+", "+parameters.get("cheese")+", "+parameters.get("vegetables")+", "+parameters.get("embutido")+" it will be ready in 5 minuts."
 			res = makeWebhookResult(speech)
 			return res
 		
