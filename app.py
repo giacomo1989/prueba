@@ -69,11 +69,11 @@ def processRequest(req):
 		#if aa == "tonno" :
 		if parameters.get("type") == "margherita" :
 			if parameters.get("extra") == "tonno" and parameters.get("vegetables") == "cipolla" :
-				speech = "11.32 Perfect, your pizza "+parameters.get("type")+" with this extra, it's a tonno and cipolla."
+				speech = "11.42 Perfect, you add these extra on your pizza "+parameters.get("type")+". your pizza tonno and cipolla will be ready in 5 minuts."
 				res = makeWebhookResult(speech)
 				return res
 			elif parameters.get("extra") == "cipolla" and parameters.get("extra") == "tonno" :
-				speech = "11.32 Perfect, your pizza "+parameters.get("type")+" with this extra, it's a tonno and cipolla."
+				speech = "11.42 Perfect, you add these extra on your pizza "+parameters.get("type")+". your pizza tonno and cipolla will be ready in 5 minuts."
 				res = makeWebhookResult(speech)
 				return res
 		
