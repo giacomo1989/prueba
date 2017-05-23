@@ -44,7 +44,7 @@ def processRequest(req):
 		parameters = result.get("parameters")
 		pizza = parameters.get("type")
 		valore = data.get("price").get(pizza)
-		speech = "11.17 The price of pizza " +pizza+ " is "+valore+" euro. Bye Bye" 
+		speech = "11.32 The price of pizza " +pizza+ " is "+valore+" euro. Bye Bye" 
 		res = makeWebhookResult(speech)
 		return res
 		
@@ -69,11 +69,11 @@ def processRequest(req):
 		#if aa == "tonno" :
 		if parameters.get("type") == "margherita" :
 			if parameters.get("extra") == "tonno" and parameters.get("vegetables") == "cipolla" :
-				speech = "11.17 Perfect, your pizza "+parameters.get("type")+" with this extra, it's a tonno and cipolla."
+				speech = "11.32 Perfect, your pizza "+parameters.get("type")+" with this extra, it's a tonno and cipolla."
 				res = makeWebhookResult(speech)
 				return res
 			elif parameters.get("extra") == "cipolla" and parameters.get("extra") == "tonno" :
-				speech = "11.17 Perfect, your pizza "+parameters.get("type")+" with this extra, it's a tonno and cipolla."
+				speech = "11.32 Perfect, your pizza "+parameters.get("type")+" with this extra, it's a tonno and cipolla."
 				res = makeWebhookResult(speech)
 				return res
 		
@@ -81,9 +81,12 @@ def processRequest(req):
 				return{}
 		
 		elif parameters.get("type") == "diavola" :
-			speech = "11.17 Perfect, your pizza "+parameters.get("type")+" with this extra: "+parameters.get("extra")+", "+parameters.get("fish")+", "+parameters.get("cheese")+", "+parameters.get("vegetables")+", "+parameters.get("embutido")+" it will be ready in 5 minuts."
-			res = makeWebhookResult(speech)
-			return res
+			if parameters.get("extra") != none : 
+				speech = "11.32 Perfect, your pizza "+parameters.get("type")+" with this extra: "+parameters.get("extra")+", "+parameters.get("fish")+", "+parameters.get("cheese")+", "+parameters.get("vegetables")+", "+parameters.get("embutido")+" it will be ready in 5 minuts."
+				res = makeWebhookResult(speech)
+				return res
+			else:
+				return{}
 		
 		else:
 			return{}
