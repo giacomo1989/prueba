@@ -39,12 +39,20 @@ data = json.loads(content.decode("utf8"))
 
 
 def processRequest(req):
-	if req["contexts"][0]["name"]== "domanda1":
-		result = req.get("result")
+	if req.get("result").get("action") == "forniture-demage.forniture-demage-yes" && req["contexts"][1]["name"]== "domanda1":
+		result = req.get("contexts")
+		datetime= result["contexts"][1]["date-time.original"]
+		city= result["contexts"][1]["geo-city"]
+		surname2= result["contexts"][1]["surnamedriver2"]
+		name2= result["contexts"][1]["namedriver2"]
+		datedriver2= result["contexts"][1]["date-otherdriver"]
+		#danni= result["contexts"][1]["forniture-demage"][1]
+		numeropoliza= result["contexts"][1]["number-sequence.original"]
+		
 		parameters = result.get("parameters")
 		saluto = parameters.get("benvenuto")
 		
-		speech = saluto+" questa e una prova per capire se la connessione webhook funziona" 
+		speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered. Please use claim no. 112233 for reference.There were not injured.The police have not been called and there were forniture demages: street lamp" 
 		res = makeWebhookResult(speech)
 		return res
 		
