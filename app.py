@@ -39,7 +39,7 @@ data = json.loads(content.decode("utf8"))
 
 
 def processRequest(req):
-	if req.get("result").get("action") == "forniture-demage.forniture-demage-yes" && req["contexts"][1]["name"]== "domanda1":
+	if req.get("result").get("action") == "forniture-demage.forniture-demage-yes" and req["contexts"][1]["name"]== "domanda1":
 		result = req.get("contexts")
 		datetime= result["contexts"][1]["date-time.original"]
 		city= result["contexts"][1]["geo-city"]
