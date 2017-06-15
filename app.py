@@ -39,6 +39,7 @@ data = json.loads(content.decode("utf8"))
 
 
 def processRequest(req):
+	'''
 	if req.get("result").get("action") == "forniture-demage.forniture-demage-yes" and req["contexts"][1]["name"]== "domanda1":
 		result = req.get("contexts")
 		datetime= result["contexts"][1]["date-time.original"]
@@ -55,11 +56,55 @@ def processRequest(req):
 		speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered. Please use claim no. 112233 for reference.There were not injured.The police have not been called and there were forniture demages: street lamp" 
 		res = makeWebhookResult(speech)
 		return res
+	'''
+	if req.get("result").get("action") == "claim.accident":
+		result = req.get("result")
+		parameters = result.get("parameters")
+		datedriver2 = parameters.get("date-otherdriver")
+		datetime = parameters.get("date-time")
+		city = parameters.get("geo-city")
+		name2 = parameters.get("namedriver2")
+		numeropoliza = parameters.get("number-sequence")
+		surname2 = parameters.get("surnamedriver2")
+			if req.get("result").get("action") == "lesionados.lesionados-yes":
+				result = req.get("result")
+				parameters = result.get("parameters")
+				nameinfortunato = parameters.get("name-injiured")
+				surnameinfortunato = parameters.get("surname-injured")
+				parteinfortunata = parameters.get("injury-part")
+					if req.get("result").get("action") == "seat.position":
+						result = req.get("result")
+						parameters = result.get("parameters")
+						posizione = parameters.get("seat-position")
+							if req.get("result").get("action") == "police.police-yes":
+								result = req.get("result")
+								parameters = result.get("parameters")
+								agenteID = parameters.get("agent-id")
+								ndenuncia = parameters.get("complain-number")
+									if req.get("result").get("action") == "forniture-demage.forniture-demage-yes":
+										result = req.get("result")
+										parameters = result.get("parameters")
+										danni = parameters.get("forniture-demage")
+										
+						
 		
+		speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered. Please use claim no. 112233 for reference.There were not injured.The police have not been called and there were forniture demages: street lamp"  
+		res = makeWebhookResult(speech)
+		return res
+	
+	
+	
+	
+	
+	
 	elif req.get("result").get("action") == "forniture-demage.forniture-demage-yes":
 		result = req.get("result")
 		parameters = result.get("parameters")
-		pizza = parameters.get("type")
+		dataotherdriver = parameters.get("date-otherdriver")
+		datetime = parameters.get("date-time")
+		city = parameters.get("geo-city")
+		
+		
 		#tonno = parameters.get("fish")
 		#cipolla = parameters.get("vegetables")
 		#if tonno == "tonno" and cipolla == "cipolla" :
