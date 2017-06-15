@@ -37,12 +37,12 @@ response = urllib.request.urlopen(url)
 content = response.read()
 data = json.loads(content.decode("utf8"))
 def processRequest(req):
-	if req.get("result").get("action") == "Cost":
+	if req.get("result").get("action") == "input.welcome":
 		result = req.get("result")
 		parameters = result.get("parameters")
-		pizza = parameters.get("type")
-		valore = data.get("price").get(pizza)
-		speech = "questa e una prova per capire The price of pizza " +pizza+ " is "+valore+" euro. Bye Bye" 
+		pizza = parameters.get("benvenuto")
+		#valore = data.get("price").get(pizza)
+		speech = "questa e una prova per capire The price of pizza " +pizza+ " is  euro. Bye Bye" 
 		res = makeWebhookResult(speech)
 		return res
 		
