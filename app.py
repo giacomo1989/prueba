@@ -36,8 +36,10 @@ url = "https://raw.githubusercontent.com/giacomo1989/prova-import/master/pizzaim
 response = urllib.request.urlopen(url)
 content = response.read()
 data = json.loads(content.decode("utf8"))
+
+
 def processRequest(req):
-	if req.get("result").get("action") == "input.welcome":
+	if req["contexts"][0]["name"]== "domanda1":
 		result = req.get("result")
 		parameters = result.get("parameters")
 		saluto = parameters.get("benvenuto")
@@ -46,7 +48,7 @@ def processRequest(req):
 		res = makeWebhookResult(speech)
 		return res
 		
-	elif req.get("result").get("action") == "order.pizza":
+	elif req.get("result").get("action") == "forniture-demage.forniture-demage-yes":
 		result = req.get("result")
 		parameters = result.get("parameters")
 		pizza = parameters.get("type")
