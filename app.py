@@ -32,19 +32,17 @@ def webhook():
 
 
 
-#url = "https://raw.githubusercontent.com/giacomo1989/prova-import/master/pizzaimport.json"
-#response = urllib.request.urlopen(url)
-#content = response.read()
-#data = json.loads(content.decode("utf8"))
-
-
+url = "https://raw.githubusercontent.com/giacomo1989/prova-import/master/pizzaimport.json"
+response = urllib.request.urlopen(url)
+content = response.read()
+data = json.loads(content.decode("utf8"))
 def processRequest(req):
-	if req.get("result").get("action") == "input.welcome":
+	if req.get("result").get("action") == "Cost":
 		result = req.get("result")
 		parameters = result.get("parameters")
-		saluto = parameters.get("benvenuto")
-		
-		speech = "sto facendo una prova per capire. il tuo saluto e'  stato " +saluto+" molto bene, lo legge " 
+		pizza = parameters.get("type")
+		valore = data.get("price").get(pizza)
+		speech = "questa e una prova per capire The price of pizza " +pizza+ " is "+valore+" euro. Bye Bye" 
 		res = makeWebhookResult(speech)
 		return res
 		
