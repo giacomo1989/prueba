@@ -40,9 +40,9 @@ def processRequest(req):
 	if req.get("result").get("action") == "input.welcome":
 		result = req.get("result")
 		parameters = result.get("parameters")
-		pizza = parameters.get("benvenuto")
-		#valore = data.get("price").get(pizza)
-		speech = "questa e una prova per capire The price of pizza " +pizza+ " is  euro. Bye Bye" 
+		saluto = parameters.get("benvenuto")
+		
+		speech = saluto+" questa e una prova per capire se la connessione webhook funziona" 
 		res = makeWebhookResult(speech)
 		return res
 		
