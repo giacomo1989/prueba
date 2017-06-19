@@ -85,67 +85,56 @@ def processRequest(req):
 										result = req.get("result")
 										parameters = result.get("parameters")
 										danni = parameters.get("forniture-demage")
-										
-						
-		
-		speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered. Please use claim no. 112233 for reference.There were not injured.The police have not been called and there were forniture demages: street lamp"  
-		res = makeWebhookResult(speech)
-		return res
-	
-	
-	
-	
-	
-	
-	elif req.get("result").get("action") == "forniture-demage.forniture-demage-yes":
-		result = req.get("result")
-		parameters = result.get("parameters")
-		dataotherdriver = parameters.get("date-otherdriver")
-		datetime = parameters.get("date-time")
-		city = parameters.get("geo-city")
-		
-		
-		#tonno = parameters.get("fish")
-		#cipolla = parameters.get("vegetables")
-		#if tonno == "tonno" and cipolla == "cipolla" :
-		speech = "10.22 perfect, your "+pizza+"it will be ready in 5 minuts. Bye Bye" 
-		res = makeWebhookResult(speech)
-		return res
-		#else
-		#	return {}
-	
-	elif req.get("result").get("action") == "adding":
-		result = req.get("result")
-		parameters = result.get("parameters")
-		#tonno= parameters.get("fish")
-		#aa=fish[0]
-		#if aa == "tonno" :
-		if parameters.get("type") == "margherita" :
-			if parameters.get("fish") == "tonno" and parameters.get("vegetables") == "cipolla" :
-				speech = "12.13 Perfect, you added these extra on your pizza "+parameters.get("type")+". your pizza tonno and cipolla will be ready in 5 minuts."
-				res = makeWebhookResult(speech)
-				return res
-			elif parameters.get("vegetables") == "cipolla" and parameters.get("fish") == "tonno" :
-				speech = "12.13 Perfect, you added these extra on your pizza "+parameters.get("type")+". your pizza tonno and cipolla will be ready in 5 minuts."
-				res = makeWebhookResult(speech)
-				return res
-		
-			else:
-				return{}
-		
-		elif parameters.get("type") == "diavola" :
-			if parameters.get("extra") != none : 
-				speech = "11.32 Perfect, your pizza "+parameters.get("type")+" with this extra: "+parameters.get("extra")+", "+parameters.get("fish")+", "+parameters.get("cheese")+", "+parameters.get("vegetables")+", "+parameters.get("embutido")+" it will be ready in 5 minuts."
-				res = makeWebhookResult(speech)
-				return res
-			else:
-				return{}
-		
-		else:
-			return{}
-	
-	else:
-		return {}
+										speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered.Please use claim no. 112233 for reference. IMPORTANT: "+nameinfortunato+" "+surnameinfortunato+" was injured the "+parteinfortunata+" in "+posizione+" . The complain number "+ndenuncia" taken by police agent number "+agenteID+" was properly loaded. There were forniture demages: "+danni  
+										res = makeWebhookResult(speech)
+										return res
+									else
+										speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered.Please use claim no. 112233 for reference. IMPORTANT: "+nameinfortunato+" "+surnameinfortunato+" was injured the "+parteinfortunata+" in "+posizione+" . The complain number "+ndenuncia" taken by police agent number "+agenteID+" was properly loaded. There were not forniture demages."
+										res = makeWebhookResult(speech)
+										return res
+							else
+								if req.get("result").get("action") == "forniture-demage.forniture-demage-yes":
+										result = req.get("result")
+										parameters = result.get("parameters")
+										danni = parameters.get("forniture-demage")
+										speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered. Please use claim no. 112233 for reference.. IMPORTANT: "+nameinfortunato+" "+surnameinfortunato+" was injured the "+parteinfortunata+" in "+posizione+" . The police have not been called. There were forniture demages: "+danni  
+										res = makeWebhookResult(speech)
+										return res
+									else
+										speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered. Please use claim no. 112233 for reference. IMPORTANT: "+nameinfortunato+" "+surnameinfortunato+" was injured the "+parteinfortunata+" in "+posizione+" . The police have not been called. There were not forniture demages."
+										res = makeWebhookResult(speech)
+										return res
+					else
+						return{}
+			else
+				if req.get("result").get("action") == "police.police-yes":
+								result = req.get("result")
+								parameters = result.get("parameters")
+								agenteID = parameters.get("agent-id")
+								ndenuncia = parameters.get("complain-number")
+									if req.get("result").get("action") == "forniture-demage.forniture-demage-yes":
+										result = req.get("result")
+										parameters = result.get("parameters")
+										danni = parameters.get("forniture-demage")
+										speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered.Please use claim no. 112233 for reference. There were not injured. The complain number "+ndenuncia" taken by police agent number "+agenteID+" was properly loaded. There were forniture demages: "+danni  
+										res = makeWebhookResult(speech)
+										return res
+									else
+										speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered.Please use claim no. 112233 for reference. There were not injured. The complain number "+ndenuncia" taken by police agent number "+agenteID+" was properly loaded. There were not forniture demages."
+										res = makeWebhookResult(speech)
+										return res
+							else
+								if req.get("result").get("action") == "forniture-demage.forniture-demage-yes":
+										result = req.get("result")
+										parameters = result.get("parameters")
+										danni = parameters.get("forniture-demage")
+										speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered. Please use claim no. 112233 for reference. There were not injured. The police have not been called. There were forniture demages: "+danni  
+										res = makeWebhookResult(speech)
+										return res
+									else
+										speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered. Please use claim no. 112233 for reference. There were not injured. The police have not been called. There were not forniture demages."
+										res = makeWebhookResult(speech)
+										return res				
 
 def makeWebhookResult(speech):
     print("Response:")
