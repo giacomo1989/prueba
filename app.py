@@ -147,22 +147,21 @@ def processRequest(req):
 		timeloss = parameters.get("time")
 		cityloss = parameters.get("geo-city")
 		name_other_driver = parameters.get("namedriver2")
-		surname_other_driver = parameters.get("namedriver2")
+		surname_other_driver = parameters.get("surnamedriver2")
 		datedriver2 = parameters.get("date-otherdriver")
 		driver2_license_number = parameters.get("license_driving")
 		driver2_license_plate = parameters.get("license-plate")
 		ass = parameters.get("assicurazione")
 		
-		speech = "esempio di raccolta dati. l'altro autista coinvolto nell'incidente si chiama "+name_other_driver+" "+surname_other_driver
-		res = makeWebhookResult(speech)
-		return res
-		
-		
-		datedriver2 = parameters.get("date-otherdriver")
-		datetime = parameters.get("date-time")
-		city = parameters.get("geo-city")
-		name2 = parameters.get("namedriver2")
-		numeropoliza = parameters.get("number-sequence")
+			if req.get("result").get("action") == "lesionados.lesionados-yes":
+				result = req.get("result")
+				parameters = result.get("parameters")
+				nameinfortunato = parameters.get("name-injiured")
+				surnameinfortunato = parameters.get("surname-injured")
+				speech = "dati raccolti prima parte esempio: "+name_other_driver+" "+surname_other_driver+" dati raccolti seconda parte es: "+nameinfortunato+" "+surnameinfortunato
+				res = makeWebhookResult(speech)
+				return res
+				
 
 def makeWebhookResult(speech):
     print("Response:")
