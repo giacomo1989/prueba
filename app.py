@@ -136,7 +136,7 @@ def processRequest(req):
 										speech = " Dear costumer, your claim of your car accident: policy number "+numeropoliza+ "heppened on "+datetime+" in "+city+" has been correct registered. Please use claim no. 112233 for reference. There were not injured. The police have not been called. There were not forniture demages."
 										res = makeWebhookResult(speech)
 										return res
-	'''
+	
 	if req.get("result").get("action") == "claim.accident":
 		result = req.get("result")
 		parameters = result.get("parameters")
@@ -161,7 +161,16 @@ def processRequest(req):
 				speech = " dati raccolti seconda parte es: "+nameinfortunato+" "+surnameinfortunato
 				res = makeWebhookResult(speech)
 				return res
-				
+	'''
+	if req.get("result").get("action") == "forniture-demage.forniture-demage-yes":
+		result = req.get("result")
+		parameters = result.get("parameters")
+		
+		danni_strada = parameters.get("forniture-demage")
+		
+		speech = " esempio se funziona webhook. danni strada: "+danni_strada
+		res = makeWebhookResult(speech)
+		return res
 
 def makeWebhookResult(speech):
     print("Response:")
