@@ -152,13 +152,13 @@ def processRequest(req):
 		driver2_license_number = parameters.get("license_driving")
 		driver2_license_plate = parameters.get("license-plate")
 		ass = parameters.get("assicurazione")
-		
+		#speech = "dati raccolti prima parte esempio: "+name_other_driver+" "+surname_other_driver
 			if req.get("result").get("action") == "lesionados.lesionados-yes":
 				result = req.get("result")
 				parameters = result.get("parameters")
 				nameinfortunato = parameters.get("name-injiured")
 				surnameinfortunato = parameters.get("surname-injured")
-				speech = "dati raccolti prima parte esempio: "+name_other_driver+" "+surname_other_driver+" dati raccolti seconda parte es: "+nameinfortunato+" "+surnameinfortunato
+				speech = " dati raccolti seconda parte es: "+nameinfortunato+" "+surnameinfortunato
 				res = makeWebhookResult(speech)
 				return res
 				
