@@ -137,7 +137,7 @@ def processRequest(req):
 										res = makeWebhookResult(speech)
 										return res
 	'''
-	if req.get("result").get("action") == "location.share":
+	if req.get("result").get("action") == "claim.accident":
 		result = req.get("result")
 		parameters = result.get("parameters")
 		
