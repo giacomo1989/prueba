@@ -140,11 +140,29 @@ def processRequest(req):
 	if req.get("result").get("action") == "location.share":
 		result = req.get("result")
 		parameters = result.get("parameters")
-		pizza = parameters.get("type")
-		valore = data.get("price").get(pizza)
-		speech = "ciao ciao questa E' una prova per vedere che il webhook funziona" 
+		
+		
+		licenseplate = parameters.get("number-sequence")
+		dateloss = parameters.get("date")
+		timeloss = parameters.get("time")
+		cityloss = parameters.get("geo-city")
+		name_other_driver = parameters.get("namedriver2")
+		surname_other_driver = parameters.get("namedriver2")
+		datedriver2 = parameters.get("date-otherdriver")
+		driver2_license_number = parameters.get("license_driving")
+		driver2_license_plate = parameters.get("license-plate")
+		ass = parameters.get("assicurazione")
+		
+		speech = "esempio di raccolta dati. l'altro autista coinvolto nell'incidente si chiama "+name_other_driver+" "+surname_other_driver
 		res = makeWebhookResult(speech)
 		return res
+		
+		
+		datedriver2 = parameters.get("date-otherdriver")
+		datetime = parameters.get("date-time")
+		city = parameters.get("geo-city")
+		name2 = parameters.get("namedriver2")
+		numeropoliza = parameters.get("number-sequence")
 
 def makeWebhookResult(speech):
     print("Response:")
