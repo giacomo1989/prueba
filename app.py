@@ -87,7 +87,7 @@ def processRequest(req):
 		#res = makeWebhookResult(prova)
 		#return res
 		
-		if req.get("result")["contexts"][2]["parameters"] != none:
+		if len(req.get("result")["contexts"][2]["parameters"]) != 0:
 			#Ndenuncia = 	req.get("result")["contexts"][1]["parameters"].get("complain-number")
 			#agentID = 	req.get("result")["contexts"][1]["parameters"].get("agent-id")
 			#extra2="\nThere were not injured.\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded\nThere were not street forniture demages."
