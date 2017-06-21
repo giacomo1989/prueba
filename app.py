@@ -166,14 +166,24 @@ def processRequest(req):
 		result = req.get("result")
 		parameters = result.get("parameters")
 		
-		#context=req.get("result")["contexts"][1]["parameters"].get("namedriver2")
-		danni=	req.get("result")["contexts"][0]["parameters"].get("forniture-demage")
-		danni_strada = parameters.get("forniture-demage")
+		name=			req.get("result")["contexts"][2]["parameters"].get("namedriver2")
+		licenseplate = 		req.get("result")["contexts"][2]["parameters"].get("number-sequence")
+		dateloss = 		req.get("result")["contexts"][2]["parameters"].get("date")
+		timeloss = 		req.get("result")["contexts"][2]["parameters"].get("time")
+		cityloss = 		req.get("result")["contexts"][2]["parameters"].get("geo-city")
+		name_other_driver = 	req.get("result")["contexts"][2]["parameters"].get("namedriver2")
+		surname_other_driver = 	req.get("result")["contexts"][2]["parameters"].get("surnamedriver2")
+		datedriver2 = 		req.get("result")["contexts"][2]["parameters"].get("date-otherdriver")
+		driver2_license_number =req.get("result")["contexts"][2]["parameters"].get("license_driving")
+		driver2_license_plate = req.get("result")["contexts"][2]["parameters"].get("license-plate")
+		ass = 			req.get("result")["contexts"][2]["parameters"].get("assicurazione")
+		danni=			req.get("result")["contexts"][0]["parameters"].get("forniture-demage")
+		danni_strada = 		parameters.get("forniture-demage")
 		
 		
 		#speech = " esempio se funziona webhook. danni strada: "+context+" 11.47 vediamo se l'array funziona "+danni+" altro valore relativo al nome del contexto "+req.get("result")["contexts"][0]["name"]
 		#req.get("result")["contexts"][0]["name"] stringa funzionante
-		speech = "11:57 il primo context e "+req.get("result")["contexts"][0]["name"]+"\nil secondo e "+req.get("result")["contexts"][1]["name"]+ "il terzo e "+req.get("result")["contexts"][2]["name"]
+		speech = "12:27 il primo context e "+req.get("result")["contexts"][0]["name"]+"\nil secondo e "+req.get("result")["contexts"][1]["name"]+ "il terzo e "+req.get("result")["contexts"][2]["name"]+" facciamo prova e vediamo se alcuni dati inseriti vanno bene "+name_other_driver+" "+surname_other_driver+" "+cityloss
 		res = makeWebhookResult(speech)
 		return res
 		
