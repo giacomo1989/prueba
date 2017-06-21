@@ -167,7 +167,7 @@ def processRequest(req):
 		parameters = result.get("parameters")
 		
 		context=req.get("result")["contexts"][1]["parameters"].get("namedriver2")
-		danni=req.get("result")["contexts"][1]["parameters"].get("forniture-demage")
+		danni=req.get("result")["contexts"][0]["parameters"].get("forniture-demage")
 		danni_strada = parameters.get("forniture-demage")
 		
 		
