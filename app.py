@@ -208,11 +208,16 @@ def processRequest(req):
 		driver2_license_plate = req.get("result")["contexts"][2]["parameters"].get("license-plate")
 		ass = 			req.get("result")["contexts"][2]["parameters"].get("assicurazione")
 		
+		Ndenuncia = 		req.get("result")["contexts"][1]["parameters"].get("complain-number")
+		agentID = 		req.get("result")["contexts"][1]["parameters"].get("agent-id")
 		
 		license = "Dear costumer, the claim of you car accident, with these details:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss+"\nhas been correct registered.\n\nPlease use claim no. 12345 for reference" 
 		important="\n\n******** IMPORTANT ********\n\nThe schedule of the third part driver involved in the accident is:\n-NAME: "+name_other_driver+"\n-SURNAME: "+surname_other_driver+"\n-DATE OF BIRTH: "+datedriver2+"\n-LICENSE NUMBER: "+driver2_license_number+"\n-LICENSE PLATE NUMBER: "+driver2_license_plate+"\n-INSURANCE: "+ass
-		extra="\nThere were not injured.\nThe police have not been called\nThere were not street forniture demages."
-		prova=license+important+extra
+		extra1="\nThere were not injured.\nThe police have not been called\nThere were not street forniture demages."
+		extra2="\nThere were not injured.\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded\nThere were not street forniture demages."
+		
+		
+		prova=license+important+extra2
 		res = makeWebhookResult(prova)
 		return res
 		
