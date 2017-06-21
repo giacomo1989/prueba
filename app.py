@@ -184,8 +184,9 @@ def processRequest(req):
 		#speech = " esempio se funziona webhook. danni strada: "+context+" 11.47 vediamo se l'array funziona "+danni+" altro valore relativo al nome del contexto "+req.get("result")["contexts"][0]["name"]
 		#req.get("result")["contexts"][0]["name"] stringa funzionante
 		
-		speech = "Dear costumer, your claim of you car accident:\n-LICENSE PLATE NUMBER:"+licenseplate+"12:27 il primo context e "+req.get("result")["contexts"][0]["name"]+"\nil secondo e "+req.get("result")["contexts"][1]["name"]+ "il terzo e "+req.get("result")["contexts"][2]["name"]+" facciamo prova e vediamo se alcuni dati inseriti vanno bene "+name_other_driver+" "+surname_other_driver+" "+cityloss
-		prova=speech+"vediamo se funziona"
+		lice_date_time_city = "Dear costumer, here you have the resume claim of you car accident:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss"\n has been correct registered.\nPlease use claim number 12121212 for refernce" 
+		important="\n**************************** IMPORTANT ******************************\n:27 il primo context e "+req.get("result")["contexts"][0]["name"]+"\nil secondo e "+req.get("result")["contexts"][1]["name"]+ "il terzo e "+req.get("result")["contexts"][2]["name"]+" facciamo prova e vediamo se alcuni dati inseriti vanno bene "+name_other_driver+" "+surname_other_driver+" "+cityloss
+		prova=lice_date_time_city+"vediamo se funziona"
 		res = makeWebhookResult(prova)
 		return res
 		
