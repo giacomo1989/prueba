@@ -166,7 +166,7 @@ def processRequest(req):
 		result = req.get("result")
 		parameters = result.get("parameters")
 		
-		name=			req.get("result")["contexts"][2]["parameters"].get("namedriver2")
+		
 		licenseplate = 		req.get("result")["contexts"][2]["parameters"].get("number-sequence")
 		dateloss = 		req.get("result")["contexts"][2]["parameters"].get("date")
 		timeloss = 		req.get("result")["contexts"][2]["parameters"].get("time")
@@ -184,11 +184,11 @@ def processRequest(req):
 		#speech = " esempio se funziona webhook. danni strada: "+context+" 11.47 vediamo se l'array funziona "+danni+" altro valore relativo al nome del contexto "+req.get("result")["contexts"][0]["name"]
 		#req.get("result")["contexts"][0]["name"] stringa funzionante
 		
-		lice_date_time_city = "Dear costumer, here you have the resume claim of you car accident:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss"\n has been correct registered.\nPlease use claim number 12121212 for refernce" 
+		license = "Dear costumer, here you have the resume claim of you car accident:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss"\n has been correct registered.\nPlease use claim number 12121212 for refernce" 
 		#important="\n**************************** IMPORTANT ******************************\n:THIRD PART DATAS:\n-NAME: "+name_other_driver+"\n-SURNAME: "+surname_other_driver+"\n-DATE OF BIRTH: "+datedriver2+"\n-LICENSE NUMBER: "+driver2_license_number+"\n-LICENSE PLATE NUMBER: "+driver2_license_plate+"\n-INSURANCE: "+ass
 		# funziona aa=" posizione 0 e "+req.get("result")["contexts"][0]["name"]+"\nposizione 1 "+req.get("result")["contexts"][1]["name"]+ "posizione 2 "+req.get("result")["contexts"][2]["name"]+" facciamo prova e vediamo se alcuni dati inseriti vanno bene "+name_other_driver+" "+surname_other_driver+" "+cityloss
 		#prova=lice_date_time_city+important+"vediamo se funziona"
-		res = makeWebhookResult(lice_date_time_city)
+		res = makeWebhookResult(license)
 		return res
 		
 
