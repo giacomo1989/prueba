@@ -207,7 +207,6 @@ def processRequest(req):
 		driver2_license_number =req.get("result")["contexts"][2]["parameters"].get("license_driving")
 		driver2_license_plate = req.get("result")["contexts"][2]["parameters"].get("license-plate")
 		ass = 			req.get("result")["contexts"][2]["parameters"].get("assicurazione")
-		
 		Ndenuncia = 		req.get("result")["contexts"][1]["parameters"].get("complain-number")
 		agentID = 		req.get("result")["contexts"][1]["parameters"].get("agent-id")
 		
@@ -216,10 +215,14 @@ def processRequest(req):
 		extra1="\nThere were not injured.\nThe police have not been called\nThere were not street forniture demages."
 		extra2="\nThere were not injured.\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded\nThere were not street forniture demages."
 		
-		
-		prova=license+important+extra2
-		res = makeWebhookResult(prova)
-		return res
+			if Ndenuncia == null
+				prova=license+important+extra1
+				res = makeWebhookResult(prova)
+				return res
+			else
+				prova=license+important+extra2
+				res = makeWebhookResult(prova)
+				return res
 		
 
 def makeWebhookResult(speech):
