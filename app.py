@@ -173,7 +173,7 @@ def processRequest(req):
 		
 		#speech = " esempio se funziona webhook. danni strada: "+context+" 11.47 vediamo se l'array funziona "+danni+" altro valore relativo al nome del contexto "+req.get("result")["contexts"][0]["name"]
 		#req.get("result")["contexts"][0]["name"] stringa funzionante
-		speech = "il primo context e "+req.get("result")["contexts"][0]["name"]+"\nil secondo e "+req.get("result")["contexts"][1]["name"]
+		speech = "11:57 il primo context e "+req.get("result")["contexts"][0]["name"]+"\nil secondo e "+req.get("result")["contexts"][1]["name"]+ "il terzo e "+req.get("result")["contexts"][2]["name"]
 		res = makeWebhookResult(speech)
 		return res
 		
