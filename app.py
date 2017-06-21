@@ -90,9 +90,10 @@ def processRequest(req):
 			res = makeWebhookResult(prova)
 			return res
 		else:
-			prova=license+important+extra1
-			res = makeWebhookResult(prova)
-			return res
+			return{}
+			#prova=license+important+extra1
+			#res = makeWebhookResult(prova)
+			#return res
 			
 			
 	'''
