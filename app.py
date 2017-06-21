@@ -215,12 +215,12 @@ def processRequest(req):
 		extra1="\nThere were not injured.\nThe police have not been called\nThere were not street forniture demages."
 		extra2="\nThere were not injured.\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded\nThere were not street forniture demages."
 		
-			if Ndenuncia == null
-				prova=license+important+extra1
+			if Ndenuncia != none:
+				prova=license+important+extra2
 				res = makeWebhookResult(prova)
 				return res
-			else
-				prova=license+important+extra2
+			else:
+				prova=license+important+extra1
 				res = makeWebhookResult(prova)
 				return res
 		
