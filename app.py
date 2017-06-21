@@ -185,7 +185,8 @@ def processRequest(req):
 		#req.get("result")["contexts"][0]["name"] stringa funzionante
 		
 		lice_date_time_city = "Dear costumer, here you have the resume claim of you car accident:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss"\n has been correct registered.\nPlease use claim number 12121212 for refernce" 
-		important="\n**************************** IMPORTANT ******************************\n:THIRD PART DATAS:\-NAME: "+name_other_driver+"\n-SURNAME: "+surname_other_driver+"\n-DATE OF BIRTH: "+datedriver2+"\n-LICENSE NUMBER: "+driver2_license_number+"\n-LICENSE PLATE NUMBER: "+driver2_license_plate+"\n-INSURANCE: "+ass+" il primo context e "+req.get("result")["contexts"][0]["name"]+"\nil secondo e "+req.get("result")["contexts"][1]["name"]+ "il terzo e "+req.get("result")["contexts"][2]["name"]+" facciamo prova e vediamo se alcuni dati inseriti vanno bene "+name_other_driver+" "+surname_other_driver+" "+cityloss
+		important="\n**************************** IMPORTANT ******************************\n:THIRD PART DATAS:\n-NAME: "+name_other_driver+"\n-SURNAME: "+surname_other_driver+"\n-DATE OF BIRTH: "+datedriver2+"\n-LICENSE NUMBER: "+driver2_license_number+"\n-LICENSE PLATE NUMBER: "+driver2_license_plate+"\n-INSURANCE: "+ass
+		aa=" il primo context e "+req.get("result")["contexts"][0]["name"]+"\nil secondo e "+req.get("result")["contexts"][1]["name"]+ "il terzo e "+req.get("result")["contexts"][2]["name"]+" facciamo prova e vediamo se alcuni dati inseriti vanno bene "+name_other_driver+" "+surname_other_driver+" "+cityloss
 		prova=lice_date_time_city+important+"vediamo se funziona"
 		res = makeWebhookResult(prova)
 		return res
