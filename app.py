@@ -167,10 +167,10 @@ def processRequest(req):
 		parameters = result.get("parameters")
 		
 		
-		
+		danni=req.get("result")["contexts"][0]["parameters"].get("forniture-demage")
 		danni_strada = parameters.get("forniture-demage")
 		
-		speech = " esempio se funziona webhook. danni strada: "+danni_strada+" 10.10 vediamo se l'array funziona "+req.get("result")["contexts"][0]["parameters"].get("forniture-demage")+" altro valore relativo al nome del contexto "+req.get("result")["contexts"][0]["name"]
+		speech = " esempio se funziona webhook. danni strada: "+danni_strada+" 11.24 vediamo se l'array funziona "+danni+" altro valore relativo al nome del contexto "+req.get("result")["contexts"][0]["name"]
 		#req.get("result")["contexts"][0]["name"] stringa funzionante
 		res = makeWebhookResult(speech)
 		return res
