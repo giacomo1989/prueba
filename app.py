@@ -92,7 +92,7 @@ def processRequest(req):
 			agentID = 	req.get("result")["contexts"][1]["parameters"].get("agent-id")
 			
 			extra2="\nThere were not injured.\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded\nThere were not street forniture demages."
-			prova="19.25"+license+important+extra2
+			prova="19.32"+str(len(req.get("result")["contexts"][2]["parameters"]))+license+important+extra2
 			res = makeWebhookResult(prova)
 			return res
 		
