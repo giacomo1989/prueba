@@ -64,7 +64,7 @@ def processRequest(req):
 		
 		elif len(req.get("result")["contexts"][1]["parameters"]) == 2:
 			extra1="\nThere were not injured.\nThe police have not been called\nThere were street forniture demages:\n-"+danni
-			prova1="11.57 "+license+important+extra1
+			prova1=license+important+extra1
 			res = makeWebhookResult(prova1)
 			return res
 	
@@ -98,7 +98,7 @@ def processRequest(req):
 		
 		elif len(req.get("result")["contexts"][1]["parameters"]) == 0:
 			extra1="\nThere were not injured.\nThe police have not been called\nThere were not street forniture demages."
-			prova1="11.51"+license+important+extra1
+			prova1=license+important+extra1
 			res = makeWebhookResult(prova1)
 			return res
 			
