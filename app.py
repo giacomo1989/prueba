@@ -47,25 +47,41 @@ def processRequest(req):
 		driver2_license_number =req.get("result")["contexts"][2]["parameters"].get("license_driving")
 		driver2_license_plate = req.get("result")["contexts"][2]["parameters"].get("license-plate")
 		ass = 			req.get("result")["contexts"][2]["parameters"].get("assicurazione")
-		danni=			req.get("result")["contexts"][0]["parameters"].get("forniture-demage")
+		danni=			req.get("result")["contexts"][1]["parameters"].get("forniture-demage")
 		danni_strada = 		parameters.get("forniture-demage")
 		
 		
 		#speech = " esempio se funziona webhook. danni strada: "+context+" 11.47 vediamo se l'array funziona "+danni+" altro valore relativo al nome del contexto "+req.get("result")["contexts"][0]["name"]
 		#req.get("result")["contexts"][0]["name"] stringa funzionante
 		
-		license = "Dear costumer, the claim of you car accident, with these details:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss+"\nhas been correct registered.\n\nPlease use claim no. 12345 for reference" 
+		license = "11.40 Dear costumer, the claim of you car accident, with these details:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss+"\nhas been correct registered.\n\nPlease use claim no. 12345 for reference" 
 		important="\n\n******** IMPORTANT ********\n\nThe schedule of the third part driver involved in the accident is:\n-NAME: "+name_other_driver+"\n-SURNAME: "+surname_other_driver+"\n-DATE OF BIRTH: "+datedriver2+"\n-LICENSE NUMBER: "+driver2_license_number+"\n-LICENSE PLATE NUMBER: "+driver2_license_plate+"\n-INSURANCE: "+ass
 		# funziona posizione=" posizione 0 e "+req.get("result")["contexts"][0]["name"]+"\nposizione 1 "+req.get("result")["contexts"][1]["name"]+ "posizione 2 "+req.get("result")["contexts"][2]["name"]+" facciamo prova e vediamo se alcuni dati inseriti vanno bene "+name_other_driver+" "+surname_other_driver+" "+cityloss
-		extra="\nThere were not injured.\nThe police have not been called\nThere were street forniture demages:\n-"+danni_strada
+		extra="\nThere were not injured.\nThe police have not been called\nThere were street forniture demages:\n-"+danni_strada+danni
 		prova=license+important+extra
 		res = makeWebhookResult(prova)
 		return res
+		
+		if len(req.get("result")["contexts"][1]["parameters"]) != 0:
+			Ndenuncia = 	req.get("result")["contexts"][1]["parameters"].get("complain-number")
+			agentID = 	req.get("result")["contexts"][1]["parameters"].get("agent-id")
+			
+			extra2="\nThere were not injured.\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded\nThere were not street forniture demages."
+			prova="9.06 "+str(len(req.get("result")["contexts"][1]["parameters"]))+license+important+extra2
+			res = makeWebhookResult(prova)
+			return res
+		
+		elif len(req.get("result")["contexts"][1]["parameters"]) == 0:
+			extra1="\nThere were not injured.\nThe police have not been called\nThere were not street forniture demages."
+			prova1="19.25"+license+important+extra1
+			res = makeWebhookResult(prova1)
+			return res
+	
+	
 	
 	if req.get("result").get("action") == "forniture-demage.forniture-demage-no":
 		result = req.get("result")
 		parameters = result.get("parameters")
-		
 		
 		licenseplate = 		req.get("result")["contexts"][2]["parameters"].get("number-sequence")
 		dateloss = 		req.get("result")["contexts"][2]["parameters"].get("date")
@@ -77,20 +93,13 @@ def processRequest(req):
 		driver2_license_number =req.get("result")["contexts"][2]["parameters"].get("license_driving")
 		driver2_license_plate = req.get("result")["contexts"][2]["parameters"].get("license-plate")
 		ass = 			req.get("result")["contexts"][2]["parameters"].get("assicurazione")
-		#Ndenuncia = 		req.get("result")["contexts"][1]["parameters"].get("complain-number")
-		#agentID = 		req.get("result")["contexts"][1]["parameters"].get("agent-id")
+		
 		license = "Dear costumer, the claim of you car accident, with these details:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss+"\nhas been correct registered.\n\nPlease use claim no. 12345 for reference" 
 		important="\n\n******** IMPORTANT ********\n\nThe schedule of the third part driver involved in the accident is:\n-NAME: "+name_other_driver+"\n-SURNAME: "+surname_other_driver+"\n-DATE OF BIRTH: "+datedriver2+"\n-LICENSE NUMBER: "+driver2_license_number+"\n-LICENSE PLATE NUMBER: "+driver2_license_plate+"\n-INSURANCE: "+ass
-		#extra1="\nThere were not injured.\nThe police have not been called\nThere were not street forniture demages."
-		#extra2="\nThere were not injured.\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded\nThere were not street forniture demages."
-		#prova=license+important+extra2
-		#res = makeWebhookResult(prova)
-		#return res
-		
+						
 		if len(req.get("result")["contexts"][1]["parameters"]) != 0:
 			Ndenuncia = 	req.get("result")["contexts"][1]["parameters"].get("complain-number")
 			agentID = 	req.get("result")["contexts"][1]["parameters"].get("agent-id")
-			
 			extra2="\nThere were not injured.\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded\nThere were not street forniture demages."
 			prova="9.06 "+str(len(req.get("result")["contexts"][1]["parameters"]))+license+important+extra2
 			res = makeWebhookResult(prova)
