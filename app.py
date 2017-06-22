@@ -97,13 +97,13 @@ def processRequest(req):
 			if len(req.get("result")["contexts"][0]["parameters"]) > 6:
 				Ndenuncia = 	req.get("result")["contexts"][2]["parameters"].get("complain-number")
 				agentID = 	req.get("result")["contexts"][2]["parameters"].get("agent-id")
-				extra2="\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded.\nThere were street forniture demages:\n-"+danni
+				extra2="\nThe police have been called.The complain number: "+Ndenuncia+" taken by Agent "+agentID+", was properly loaded.\nThere were street forniture demages:\n"+danni
 				prova="11.51 "+license+important+injured+extra2
 				res = makeWebhookResult(prova)
 				return res
 						#NO POLIZIA
 			elif len(req.get("result")["contexts"][0]["parameters"]) == 6:
-				extra1="\nThe police have not been called.\nThere were street forniture demages:\n-"+danni
+				extra1="\nThe police have not been called.\nThere were street forniture demages:\n"+danni
 				prova1=license+important+injured+extra1
 				res = makeWebhookResult(prova1)
 				return res
@@ -136,13 +136,13 @@ def processRequest(req):
 			if len(req.get("result")["contexts"][1]["parameters"]) != 0:
 				Ndenuncia = 	req.get("result")["contexts"][1]["parameters"].get("complain-number")
 				agentID = 	req.get("result")["contexts"][1]["parameters"].get("agent-id")
-				extra2="\nThere were not injured.\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded\nThere were not street forniture demages."
+				extra2="\nThere were not injured.\nThe police have been called.\nThe complain number: "+Ndenuncia+" taken by Agent "+agentID+", was properly loaded.\nThere were not street forniture demages."
 				prova="11.51 "+str(len(req.get("result")["contexts"][1]["parameters"]))+license+important+extra2
 				res = makeWebhookResult(prova)
 				return res
 						#NO POLIZIA
 			elif len(req.get("result")["contexts"][1]["parameters"]) == 0:
-				extra1="\nThere were not injured.\nThe police have not been called\nThere were not street forniture demages."
+				extra1="\nThere were not injured.\nThe police have not been called.\nThere were not street forniture demages."
 				prova1=license+important+extra1
 				res = makeWebhookResult(prova1)
 				return res
@@ -175,7 +175,7 @@ def processRequest(req):
 			if len(req.get("result")["contexts"][0]["parameters"]) > 4:
 				Ndenuncia = 	req.get("result")["contexts"][2]["parameters"].get("complain-number")
 				agentID = 	req.get("result")["contexts"][2]["parameters"].get("agent-id")
-				extra2="\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded\nThere were not street forniture demages."
+				extra2="\nThe police have been called. The complain number: "+Ndenuncia+" taken by Agent "+agentID+", was properly loaded.\nThere were not street forniture demages."
 				prova="11.51 "+license+important+injured+extra2
 				res = makeWebhookResult(prova)
 				return res
