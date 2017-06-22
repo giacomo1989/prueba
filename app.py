@@ -186,26 +186,7 @@ def processRequest(req):
 				res = makeWebhookResult(prova1)
 				return res
 			
-	#if req.get("result").get("action") == "roadside.assistance":
-		#if "message" in messaging_event:
-
-    			#sender_id = messaging_event['sender']['id']
-
-    			# Check the message input for an attachment
-    			#if 'attachments' in messaging_event['message']:
-        			# Extract the latitue and longitude values
-        			#lat = messaging_event['message']['attachments'][0]['payload']['coordinates']['lat']
-        			#lng = messaging_event['message']['attachments'][0]['payload']['coordinates']['long']
-
-       			 	# Make a Google Maps Public API call with the latitude and longitude values
-        			#google_maps_results = get_url('http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false' % (lat, lng))
-
-        			# Reply with the address of the location via text message (as unicode with u'' when using strings)
-        			#reply_with_text(sender_id, u'I found this address for your location: 📍' + google_maps_results['results'][0]['formatted_address'])
-		#prova1="vediamo cosa funziona "+req.get("result").get("action")
-		#res = makeWebhookResult(prova1)
-		#return res
-
+	
 def makeWebhookResult(speech):
     print("Response:")
     print(speech)
