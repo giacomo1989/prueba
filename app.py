@@ -186,7 +186,7 @@ def processRequest(req):
 				res = makeWebhookResult(prova1)
 				return res
 			
-	if req.get("result").get("action") == "roadside.assistance":
+	if req.get("result").get("action") == "location.share":
 		#if "message" in messaging_event:
 
     			#sender_id = messaging_event['sender']['id']
