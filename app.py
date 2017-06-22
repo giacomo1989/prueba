@@ -185,6 +185,11 @@ def processRequest(req):
 				prova1=license+important+injured+extra1
 				res = makeWebhookResult(prova1)
 				return res
+			
+	if req.get("result").get("action") == "roadside.assistance":
+		prova1="vediamo cosa funziona"
+		res = makeWebhookResult(prova1)
+		return res
 
 def makeWebhookResult(speech):
     print("Response:")
