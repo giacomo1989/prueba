@@ -186,7 +186,7 @@ def processRequest(req):
 				res = makeWebhookResult(prova1)
 				return res
 			
-	if req.get("result").get("action") == "location.share":
+	if req.get("result").get("action") != none:
 		#if "message" in messaging_event:
 
     			#sender_id = messaging_event['sender']['id']
@@ -202,7 +202,7 @@ def processRequest(req):
 
         			# Reply with the address of the location via text message (as unicode with u'' when using strings)
         			#reply_with_text(sender_id, u'I found this address for your location: 📍' + google_maps_results['results'][0]['formatted_address'])
-		prova1="vediamo cosa funziona"
+		prova1="vediamo cosa funziona "+req.get("result").get("action")
 		res = makeWebhookResult(prova1)
 		return res
 
