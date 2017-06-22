@@ -57,14 +57,14 @@ def processRequest(req):
 			Ndenuncia = 	req.get("result")["contexts"][1]["parameters"].get("complain-number")
 			agentID = 	req.get("result")["contexts"][1]["parameters"].get("agent-id")
 			
-			extra2="\nThere were not injured.\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded\nThere were street forniture demages:\n-"+danni"
-			prova="11.46 "+str(len(req.get("result")["contexts"][1]["parameters"]))+" "+license+important+extra2
+			extra2="\nThere were not injured.\nThe police have been called. The complain "+Ndenuncia+" by Agent "+agentID+" was properly loaded\nThere were street forniture demages:\n-"+danni
+			prova="11.57 "+str(len(req.get("result")["contexts"][1]["parameters"]))+" "+license+important+extra2
 			res = makeWebhookResult(prova)
 			return res
 		
 		elif len(req.get("result")["contexts"][1]["parameters"]) == 2:
-			extra1="\nThere were not injured.\nThe police have not been called\nThere were street forniture demages:\n-"+danni"
-			prova1="11.46 "+license+important+extra1
+			extra1="\nThere were not injured.\nThe police have not been called\nThere were street forniture demages:\n-"+danni
+			prova1="11.57 "+license+important+extra1
 			res = makeWebhookResult(prova1)
 			return res
 	
