@@ -187,7 +187,7 @@ def processRequest(req):
 				res = makeWebhookResult(prova1)
 				return res
 	
-	if req.get("result").get("action") == "roadside.assistance":
+	if req.get("result").get("action") == "aaaa":#"roadside.assistance":
 		result = req.get("result")
 		#parameters = result.get("parameters")
 		speech="prova per vedere se funziona"
