@@ -187,10 +187,10 @@ def processRequest(req):
 				res = makeWebhookResult(prova1)
 				return res
 	
-	if req.get("result").get("action") == "aaaa":#"roadside.assistance":
+	if req.get("result").get("action") == "location.share":
 		result = req.get("result")
 		#parameters = result.get("parameters")
-		speech="prova per vedere se funziona"
+		speech="ok il collegamento e attivo"
 		res = makeWebhookResult(speech)
 		return res
 	
