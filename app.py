@@ -186,8 +186,15 @@ def processRequest(req):
 				prova1=license+important+injured+extra1
 				res = makeWebhookResult(prova1)
 				return res
-	
+	'''
 	if req.get("result").get("action") == "location.share":
+		url = "https://raw.githubusercontent.com/giacomo1989/prova-import/master/pizzaimport.json"
+		response = urllib.request.urlopen(url)
+		content = response.read()
+		data = json.loads(content.decode("utf8"))
+		
+		lat = req.get("messagging")[0]["message"]["attachments"][0]["payload"]["coordinates"]["lat"]
+		lng
 		if "message" in messaging_event:
 
     		sender_id = messaging_event['sender']['id']
@@ -209,7 +216,7 @@ def processRequest(req):
 		speech="ok il collegamento e attivo "+ google_maps_results['results'][0]['formatted_address']
 		res = makeWebhookResult(speech)
 		return res
-	
+	'''
 def makeWebhookResult(speech):
     print("Response:")
     print(speech)
