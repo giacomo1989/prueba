@@ -193,8 +193,8 @@ def processRequest(req):
 		content = response.read()
 		data = json.loads(content.decode("utf8"))
 		
-		lat = req.get("messagging")[0]["message"]["attachments"][0]["payload"]["coordinates"]["lat"]
-		lng = event.message.attachments[0].payload.coordinates.long
+		#lat = req.get("messagging")[0]["message"]["attachments"][0]["payload"]["coordinates"]["lat"]
+		#lng = event.message.attachments[0].payload.coordinates.long
 		
 		'''
 		if "message" in messaging_event:
