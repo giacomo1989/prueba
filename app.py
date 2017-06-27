@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 from __future__ import print_function
 from future import standard_library
 standard_library.install_aliases()
@@ -40,9 +39,9 @@ def webhook():
 
   @app.route('/', methods=['POST'])
 def handle_message():
-    '''
+   
   #  Handle messages sent by facebook messenger to the applicaiton
-    '''
+    
     data = request.get_json()
 
     if data["object"] == "page":
@@ -59,9 +58,9 @@ def handle_message():
     return "ok"
 
 def send_message(sender_id, message_text):
-    '''
+    
   #  Sending response back to the user using facebook graph API
-    '''
+    
     r = requests.post("https://graph.facebook.com/v2.6/me/messages",
 
         params={"access_token": PAGE_ACCESS_TOKEN},
@@ -75,12 +74,12 @@ def send_message(sender_id, message_text):
 	
 	def parse_user_text(user_text):
 
-    '''
+    
    # Send the message to API AI which invokes an intent
    # and sends the response accordingly
     #The bot response is appened with weaher data fetched from
     #open weather map client
-    '''
+    
 
     request = ai.text_request()
     request.query = user_text
