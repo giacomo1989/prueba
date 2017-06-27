@@ -190,10 +190,10 @@ def processRequest(req):
 				return res
 	
 	if req.get("result").get("action") == "location.share":
-		url = "https://raw.githubusercontent.com/giacomo1989/prova-import/master/pizzaimport.json"
-		response = urllib.request.urlopen(url)
-		content = response.read()
-		data = json.loads(content.decode("utf8"))
+		#url = "https://raw.githubusercontent.com/giacomo1989/prova-import/master/pizzaimport.json"
+		#response = urllib.request.urlopen(url)
+		#content = response.read()
+		#data = json.loads(content.decode("utf8"))
 		
 		#lat = req.get("messagging")[0]["message"]["attachments"][0]["payload"]["coordinates"]["lat"]
 		#lng = event.message.attachments[0].payload.coordinates.long
