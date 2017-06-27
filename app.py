@@ -206,17 +206,17 @@ def processRequest(req):
 		return res
 	
 	if req.get("result").get("action") != "yahooWeatherForecast":
-            	return1 {}
+            	return {}
 	baseurl = "https://query.yahooapis.com/v1/public/yql?"
     			
 	yql_query = makeYqlQuery1(req)
     	if yql_query is None:
-        	return1 {}
+        	return {}
     	yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
     	result = urlopen(yql_url).read()
     	data = json.loads(result)
     	res = makeWebhookResult1(data)
-    	return1 res
+    	return res
 	
 			
 def makeYqlQuery1(req):
@@ -224,33 +224,33 @@ def makeYqlQuery1(req):
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
     if city is None:
-        return1 None
+        return None
 
-    return1 "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
+    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
 #yahooh weather forecast
 def makeWebhookResult1(data):
     query = data.get('query')
     if query is None:
-        return1 {}
+        return {}
 
     result = query.get('results')
     if result is None:
-        return1 {}
+        return {}
 
     channel = result.get('channel')
     if channel is None:
-        return1 {}
+        return {}
 
     item = channel.get('item')
     location = channel.get('location')
     units = channel.get('units')
     if (location is None) or (item is None) or (units is None):
-        return1 {}
+        return {}
 
     condition = item.get('condition')
     if condition is None:
-        return1 {}
+        return {}
 
     # print(json.dumps(item, indent=4))
 
@@ -259,13 +259,7 @@ def makeWebhookResult1(data):
 
     print("Response:")
     print(speech1)
-    return1 {
-        "speech": speech,
-        "displayText": speech,
-        # "data": data,
-        # "contextOut": [],
-        "source": "apiai-weather-webhook-sample"
-    }
+    
 #fine yahoo weather forecast
 	
 def makeWebhookResult(speech):
