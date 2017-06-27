@@ -54,12 +54,6 @@ def processRequest(req):
     res = makeWebhookResult(data)
     return res
 
-	if req.get("result").get("action") == "location.share":
-		speech="16.47 ok il collegamento e attivo "
-		res = makeWebhookResult(speech)
-		return res
-
-
 def makeYqlQuery(req):
     result = req.get("result")
     parameters = result.get("parameters")
