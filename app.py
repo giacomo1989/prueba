@@ -17,11 +17,11 @@ CLIENT_ACCESS_TOKEN = '9964b46aafa34cfd8b1a414b31abc819'
 PAGE_ACCESS_TOKEN = 'EAAODZBYcpPmkBAGtnxJ5FbERHR5hnBfbAvBeXTKGIefcNAzILPRz0cM8EACKnZCk4KEmxX5UnHP4WuC7CAFovMq8Fmosjl5PzsHHxCZCHTcSB134FuDWybuA9o4P7ZAIBo5RTHszaxn9gZC66O6adAtqgZAR18W8PGL8Gni9bOFAZDZD'
 VERIFY_TOKEN = '9964b46aafa34cfd8b1a414b31abc819'
 ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
-
+'''
 # Flask app should start in global layout
 app = Flask(__name__)
 
-
+'''
 access_token = 'EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD'
 
 
@@ -41,7 +41,7 @@ def webhook():
   @app.route('/', methods=['POST'])
 def handle_message():
     '''
-    Handle messages sent by facebook messenger to the applicaiton
+  #  Handle messages sent by facebook messenger to the applicaiton
     '''
     data = request.get_json()
 
@@ -60,7 +60,7 @@ def handle_message():
 
 def send_message(sender_id, message_text):
     '''
-    Sending response back to the user using facebook graph API
+  #  Sending response back to the user using facebook graph API
     '''
     r = requests.post("https://graph.facebook.com/v2.6/me/messages",
 
@@ -76,10 +76,10 @@ def send_message(sender_id, message_text):
 	def parse_user_text(user_text):
 
     '''
-    Send the message to API AI which invokes an intent
-    and sends the response accordingly
-    The bot response is appened with weaher data fetched from
-    open weather map client
+   # Send the message to API AI which invokes an intent
+   # and sends the response accordingly
+    #The bot response is appened with weaher data fetched from
+    #open weather map client
     '''
 
     request = ai.text_request()
