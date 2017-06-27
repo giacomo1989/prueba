@@ -21,71 +21,7 @@ app = Flask(__name__)
 
 access_token = 'EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD'
 
-@app.route("/", methods=["GET"])
-def root():
-    return "Hello World!"
 
-
-# webhook for facebook to initialize the bot
-@app.route('/webhook', methods=['GET'])
-def get_webhook():
-
-    if not 'hub.verify_token' in request.args or not 'hub.challenge' in request.args:
-        abort(400)
-
-    return request.args.get('hub.challenge')
-
-
-@app.route('/webhook', methods=['POST'])
-def post_webhook():
-    data = request.json
-
-    if data["object"] == "page":
-        for entry in data['entry']:
-            for messaging_event in entry['messaging']:
-
-                if "message" in messaging_event:
-
-    sender_id = messaging_event['sender']['id']
-
-    # Check the message input for an attachment
-    if 'attachments' in messaging_event['message']:
-        # Extract the latitue and longitude values
-        lat = messaging_event['message']['attachments'][0]['payload']['coordinates']['lat']
-        lng = messaging_event['message']['attachments'][0]['payload']['coordinates']['long']
-
-        # Make a Google Maps Public API call with the latitude and longitude values
-        google_maps_results = get_url('http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false' % (lat, lng))
-
-        # Reply with the address of the location via text message (as unicode with u'' when using strings)
-        reply_with_text(sender_id, u'I found this address for your location: 📍' + google_maps_results['results'][0]['formatted_address'])
-
-    return "ok", 200
-
-
-def reply(recipient_id, message_text):
-    params = {
-        "access_token": access_token
-    }
-
-    headers = {
-        "Content-Type": "application/json"
-    }
-
-    data = json.dumps({
-        "recipient": {
-            "id": recipient_id
-        },
-        "message": {
-            "text": message_text
-        }
-    })
-
-    print data
-
-    url = "https://graph.facebook.com/v2.6/me/messages?" + urllib.urlencode(params)
-    r = urlfetch.fetch(url=url, headers=headers, method='POST', payload=data)
-'''
 # webhook for facebook to initialize the bot
 @app.route('/webhook', methods=['GET'])
 def get_webhook():
@@ -269,7 +205,7 @@ def processRequest(req):
 				res = makeWebhookResult(prova1)
 				return res
 	
-	#if req.get("result").get("action") == "location.share":
+	if req.get("result").get("action") == "location.share":
 		
 		    
 		
@@ -283,9 +219,9 @@ def processRequest(req):
 		
 		#result = req.get("result")
 		#parameters = result.get("parameters")
-		#speech="ok il collegamento e attivo "#+lat
-		#res = makeWebhookResult(speech)
-		#return res
+		speech="ok il collegamento e attivo "#+lat
+		res = makeWebhookResult(speech)
+		return res
 	
 
 def reply_with_text(recipient_id, message_text):
