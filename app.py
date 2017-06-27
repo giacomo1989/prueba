@@ -16,6 +16,16 @@ app = Flask(__name__)
 
 
 access_token = 'EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD'
+# webhook for facebook to initialize the bot
+@app.route('/webhook', methods=['GET'])
+def get_webhook():
+
+    if not 'hub.verify_token' in request.args or not 'hub.challenge' in request.args:
+        abort(400)
+
+    return request.args.get('hub.challenge')
+
+
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
