@@ -204,7 +204,7 @@ def processRequest(req):
 		
 		#result = req.get("result")
 		#parameters = result.get("parameters")
-		speech="16.13 ok il collegamento e attivo "#+lat
+		speech="16.47 ok il collegamento e attivo "#+lat
 		res = makeWebhookResult(speech)
 		return res
 	
