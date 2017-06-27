@@ -7,9 +7,6 @@ import urllib.request, urllib.parse, urllib.error
 import json
 import os
 
-import urllib
-from flask import abort
-import urlfetch
 
 from flask import Flask
 from flask import request
