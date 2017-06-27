@@ -19,11 +19,23 @@ app = Flask(__name__)
 access_token = 'EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD'
 
 
+@app.route('/', methods=['GET'])
+def handle_verification():
+    if (request.args.get('hub.verify_token', '') == '9964b46aafa34cfd8b1a414b31abc819'):
+        print("Verified")
+        return request.args.get('hub.challenge', '')
+    else:
+        print("Wrong token")
+        return "Error, wrong validation token"
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
 
-    print("Request:")
+  
+	
+	
+	print("Request:")
     print(json.dumps(req, indent=4))
 
     res = processRequest(req)
