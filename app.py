@@ -18,6 +18,22 @@ app = Flask(__name__)
 
 access_token = 'EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD'
 
+owm = pyowm.OWM('023231a7fc73d296d874874991856cfb')  # You MUST provide a valid API key
+
+forecast = owm.daily_forecast(input_city)
+
+observation = owm.weather_at_place(input_city)
+w = observation.get_weather()
+print(w)                      
+print(w.get_wind())                 
+print(w.get_humidity())      
+max_temp = str(w.get_temperature('celsius')['temp_max'])  
+min_temp = str(w.get_temperature('celsius')['temp_min'])
+current_temp = str(w.get_temperature('celsius')['temp'])
+wind_speed = str(w.get_wind()['speed'])
+humidity = str(w.get_humidity())
+
+
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -202,7 +218,7 @@ def processRequest(req):
 		
 		#result = req.get("result")
 		#parameters = result.get("parameters")
-		speech="16.47 ok il collegamento e attivo "#+lat
+		speech="18.56 ok il collegamento e attivo "#+lat
 		res = makeWebhookResult(speech)
 		return res
 '''	
