@@ -10,17 +10,17 @@ import os
 from flask import Flask
 from flask import request
 from flask import make_response
+
+# Flask app should start in global layout
+app = Flask(__name__)
+
 '''
 import apiai
 CLIENT_ACCESS_TOKEN = '9964b46aafa34cfd8b1a414b31abc819'
 PAGE_ACCESS_TOKEN = 'EAAODZBYcpPmkBAGtnxJ5FbERHR5hnBfbAvBeXTKGIefcNAzILPRz0cM8EACKnZCk4KEmxX5UnHP4WuC7CAFovMq8Fmosjl5PzsHHxCZCHTcSB134FuDWybuA9o4P7ZAIBo5RTHszaxn9gZC66O6adAtqgZAR18W8PGL8Gni9bOFAZDZD'
 VERIFY_TOKEN = '9964b46aafa34cfd8b1a414b31abc819'
 ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
-'''
-# Flask app should start in global layout
-app = Flask(__name__)
 
-'''
 access_token = 'EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD'
 
 
