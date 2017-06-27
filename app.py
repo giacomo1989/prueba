@@ -186,7 +186,7 @@ def processRequest(req):
 				prova1=license+important+injured+extra1
 				res = makeWebhookResult(prova1)
 				return res
-	'''
+	
 	if req.get("result").get("action") == "location.share":
 		url = "https://raw.githubusercontent.com/giacomo1989/prova-import/master/pizzaimport.json"
 		response = urllib.request.urlopen(url)
@@ -194,7 +194,9 @@ def processRequest(req):
 		data = json.loads(content.decode("utf8"))
 		
 		lat = req.get("messagging")[0]["message"]["attachments"][0]["payload"]["coordinates"]["lat"]
-		lng
+		lng = event.message.attachments[0].payload.coordinates.long
+		
+		'''
 		if "message" in messaging_event:
 
     		sender_id = messaging_event['sender']['id']
@@ -209,14 +211,14 @@ def processRequest(req):
         	google_maps_results = get_url('http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false' % (lat, lng))
 
         	# Reply with the address of the location via text message (as unicode with u'' when using strings)
-        	
+        	'''
 		
 		#result = req.get("result")
 		#parameters = result.get("parameters")
-		speech="ok il collegamento e attivo "+ google_maps_results['results'][0]['formatted_address']
+		speech="ok il collegamento e attivo "
 		res = makeWebhookResult(speech)
 		return res
-	'''
+	
 def makeWebhookResult(speech):
     print("Response:")
     print(speech)
