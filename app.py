@@ -205,7 +205,7 @@ def processRequest(req):
 		speech="16.47 ok il collegamento e attivo "#+lat
 		res = makeWebhookResult(speech)
 		return res
-	
+'''	
 	#if req.get("result").get("action") != "yahooWeatherForecast":
             	#return {}
 	if req.get("result").get("action") == "yahooWeatherForecast":
@@ -265,7 +265,7 @@ def makeWebhookResult1(data):
 
     print("Response:")
     print(speech1)
-    
+    '''
 #fine yahoo weather forecast
 	
 def makeWebhookResult(speech):
