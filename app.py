@@ -11,7 +11,7 @@ import os
 from flask import Flask
 from flask import request
 from flask import make_response
-
+'''
 import apiai
 CLIENT_ACCESS_TOKEN = '9964b46aafa34cfd8b1a414b31abc819'
 PAGE_ACCESS_TOKEN = 'EAAODZBYcpPmkBAGtnxJ5FbERHR5hnBfbAvBeXTKGIefcNAzILPRz0cM8EACKnZCk4KEmxX5UnHP4WuC7CAFovMq8Fmosjl5PzsHHxCZCHTcSB134FuDWybuA9o4P7ZAIBo5RTHszaxn9gZC66O6adAtqgZAR18W8PGL8Gni9bOFAZDZD'
@@ -122,7 +122,7 @@ def send_message_response(sender_id, message_text):
 
     for message in messages:
         send_message(sender_id, message)
-
+'''
 	
 	
 @app.route('/webhook', methods=['POST'])
