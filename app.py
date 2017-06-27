@@ -223,12 +223,7 @@ def processRequest(req):
 		res = makeWebhookResult(speech)
 		return res
 	
-
-def reply_with_text(recipient_id, message_text):
-    message = {
-        "text": message_text
-    	}
-    reply_to_facebook(recipient_id, message)			
+			
 
 def makeWebhookResult(speech):
     print("Response:")
