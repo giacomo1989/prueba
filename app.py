@@ -42,11 +42,19 @@ def post_webhook():
 
                 if "message" in messaging_event:
 
-                    sender_id = messaging_event['sender']['id']
+    sender_id = messaging_event['sender']['id']
 
-                    if 'text' in messaging_event['message']:
-                        message_text = messaging_event['message']['text']
-                        reply(sender_id, message_text)
+    # Check the message input for an attachment
+    if 'attachments' in messaging_event['message']:
+        # Extract the latitue and longitude values
+        lat = messaging_event['message']['attachments'][0]['payload']['coordinates']['lat']
+        lng = messaging_event['message']['attachments'][0]['payload']['coordinates']['long']
+
+        # Make a Google Maps Public API call with the latitude and longitude values
+        google_maps_results = get_url('http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false' % (lat, lng))
+
+        # Reply with the address of the location via text message (as unicode with u'' when using strings)
+        reply_with_text(sender_id, u'I found this address for your location: 📍' + google_maps_results['results'][0]['formatted_address'])
 
     return "ok", 200
 
