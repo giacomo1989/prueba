@@ -343,9 +343,13 @@ def processRequest(req):
     		units = channel.get('units')
     		condition = item.get('condition')
     		
+		gradi_farenheit=condition.get('temp')
+		simbolo_gradi=units.get('temperature')
+		
+		celsius=(condition.get('temp')-32)/1.8
 
-       		speech1 = "Today in " + location.get('city') + ": " + condition.get('text') +", the temperature is " + condition.get('temp') + " " + units.get('temperature')
-
+       		speech1 = "12.05 Today in " + location.get('city') + ": " + condition.get('text') +", the temperature is " + celsius + " C"
+	
 		
 		speech="11.42 le previsioni meteo a "+city+" saranno a dispozione a breve"
 		res = makeWebhookResult(speech1)
