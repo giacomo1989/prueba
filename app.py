@@ -307,11 +307,16 @@ def processRequest(req):
 		
 		#result = req.get("result")
 		#parameters = result.get("parameters")
-		speech="9.50 ok il collegamento e attivo "#+lat
+		speech="9.53 ok il collegamento e attivo "#+lat
 		res = makeWebhookResult(speech)
 		return res
-'''
+
 	if req.get("result").get("action") == "yahooWeatherForecast":
+		speech="le previsioni meteo saranno a dispozione a breve"
+		res = makeWebhookResult(speech)
+		return res
+		
+		'''
 		baseurl = "https://query.yahooapis.com/v1/public/yql?"		
 		yql_query = makeYqlQuery1(req)
     		yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
