@@ -310,12 +310,24 @@ def processRequest(req):
 		speech="19.12 ok il collegamento e attivo "#+lat
 		res = makeWebhookResult(speech)
 		return res
-'''	
+
+	if req.get("result").get("action") == "yahooWeatherForecast":
+		baseurl = "https://query.yahooapis.com/v1/public/yql?"		
+		yql_query = makeYqlQuery1(req)
+    		yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
+    		result = urlopen(yql_url).read()
+    		data = json.loads(result)
+		
+		speech="le previsioni meteo saranno a dispozione a breve"
+		res = makeWebhookResult(speech)
+		return res
+	
+	
+	'''	
 	#if req.get("result").get("action") != "yahooWeatherForecast":
             	#return {}
 	if req.get("result").get("action") == "yahooWeatherForecast":
-	baseurl = "https://query.yahooapis.com/v1/public/yql?"
-    			
+	baseurl = "https://query.yahooapis.com/v1/public/yql?"		
 	yql_query = makeYqlQuery1(req)
     	if yql_query is None:
         	return {}
