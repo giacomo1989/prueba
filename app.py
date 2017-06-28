@@ -15,20 +15,6 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 '''
-from __future__ import print_function
-from future import standard_library
-standard_library.install_aliases()
-import urllib.request, urllib.parse, urllib.error
-import json
-import os
-
-from flask import Flask
-from flask import request
-from flask import make_response
-
-
-
-
 import apiai
 CLIENT_ACCESS_TOKEN = '9964b46aafa34cfd8b1a414b31abc819'
 PAGE_ACCESS_TOKEN = 'EAAODZBYcpPmkBAGtnxJ5FbERHR5hnBfbAvBeXTKGIefcNAzILPRz0cM8EACKnZCk4KEmxX5UnHP4WuC7CAFovMq8Fmosjl5PzsHHxCZCHTcSB134FuDWybuA9o4P7ZAIBo5RTHszaxn9gZC66O6adAtqgZAR18W8PGL8Gni9bOFAZDZD'
@@ -348,7 +334,7 @@ def processRequest(req):
 		celsius=int(condition.get('temp'))
 		Gc=int((celsius-32)/1.8)
        		
-		speech1 = date+"14.49 Today in " + location.get('city') + ": " + condition.get('text') + ", the temperature is " + str(Gc)+ " C"
+		speech1 = "Today :"+date+" in " + location.get('city') + ": " + condition.get('text') + ", the temperature is " + str(Gc)+ " C"
 		res = makeWebhookResult(speech1)
 		return res
 		
@@ -357,14 +343,7 @@ def makeWebhookResult(speech):
     print("Response:")
     print(speech)
 	
-def SD(String):
-	baseurl = "https://query.yahooapis.com/v1/public/yql?"
-	yql_query = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text= '"+ city+"')"
-	yql_url = baseurl + urllib.urlencode({'q':yql_query}) + "&format=json"
-	result1 = urlopen(yql_url).read()
-    	data = json.loads(result1)
-	date=item["forecast"][0].get("date")
-	return date
+
 	
     return {
         "speech": speech,
