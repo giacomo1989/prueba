@@ -348,7 +348,7 @@ def processRequest(req):
 		celsius=int(condition.get('temp'))
 		Gc=int((celsius-32)/1.8)
        		
-		speech1 = date+" Today in " + location.get('city') + ": " + condition.get('text') + ", the temperature is " + str(Gc)+ " C"
+		speech1 = date+"14.49 Today in " + location.get('city') + ": " + condition.get('text') + ", the temperature is " + str(Gc)+ " C"
 		res = makeWebhookResult(speech1)
 		return res
 		
@@ -356,7 +356,16 @@ def processRequest(req):
 def makeWebhookResult(speech):
     print("Response:")
     print(speech)
-
+	
+def SD(String):
+	baseurl = "https://query.yahooapis.com/v1/public/yql?"
+	yql_query = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text= '"+ city+"')"
+	yql_url = baseurl + urllib.urlencode({'q':yql_query}) + "&format=json"
+	result1 = urlopen(yql_url).read()
+    	data = json.loads(result1)
+	date=item["forecast"][0].get("date")
+	return date
+	
     return {
         "speech": speech,
         "displayText": speech,
