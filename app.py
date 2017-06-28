@@ -4,6 +4,7 @@ from __future__ import print_function
 from future import standard_library
 standard_library.install_aliases()
 import urllib.request, urllib.parse, urllib.error
+import urllib2
 import json
 import os
 
@@ -335,7 +336,7 @@ def processRequest(req):
 		#result1 = urlopen(yql_url).read()
     		#data = json.loads(result1)
 		
-		speech="10.43 le previsioni meteo a "+city+" saranno a dispozione a breve"
+		speech="11.35 le previsioni meteo a "+city+" saranno a dispozione a breve"
 		res = makeWebhookResult(speech)
 		return res
 		
