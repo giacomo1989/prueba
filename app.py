@@ -1,9 +1,24 @@
 #!/usr/bin/env python
-
+'''
 from __future__ import print_function
 from future import standard_library
 standard_library.install_aliases()
 import urllib.request, urllib.parse, urllib.error
+import json
+import os
+
+from flask import Flask
+from flask import request
+from flask import make_response
+'''
+from __future__ import print_function
+from future.standard_library import install_aliases
+install_aliases()
+
+from urllib.parse import urlparse, urlencode
+from urllib.request import urlopen, Request
+from urllib.error import HTTPError
+
 import json
 import os
 
@@ -322,7 +337,7 @@ def processRequest(req):
 		#result1 = urlopen(yql_url).read()
     		#data = json.loads(result1)
 		
-		speech="10.31 le previsioni meteo a "+city+" saranno a dispozione a breve"
+		speech="10.35 le previsioni meteo a "+city+" saranno a dispozione a breve"
 		res = makeWebhookResult(speech)
 		return res
 		
