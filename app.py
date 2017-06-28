@@ -335,9 +335,20 @@ def processRequest(req):
 		yql_url = baseurl + urllib.urlencode({'q':yql_query}) + "&format=json"
 		result1 = urlopen(yql_url).read()
     		data = json.loads(result1)
+		query = data.get('query')
+    		result2 = query.get('results')
+    		channel = result2.get('channel')
+    		item = channel.get('item')
+    		location = channel.get('location')
+    		units = channel.get('units')
+    		condition = item.get('condition')
+    		
+
+       		speech1 = "Today in " + location.get('city') + ": " + condition.get('text') +", the temperature is " + condition.get('temp') + " " + units.get('temperature')
+
 		
 		speech="11.42 le previsioni meteo a "+city+" saranno a dispozione a breve"
-		res = makeWebhookResult(speech)
+		res = makeWebhookResult(speech1)
 		return res
 		
 		'''
