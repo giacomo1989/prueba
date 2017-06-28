@@ -340,7 +340,7 @@ def processRequest(req):
     		result2 = query.get('results')
     		channel = result2.get('channel')
     		item = channel.get('item')
-    		date=item["forecast"][1].get("date")
+    		date=item["forecast"][0].get("date")
 		location = channel.get('location')
     		units = channel.get('units')
     		condition = item.get('condition')
