@@ -322,7 +322,7 @@ def processRequest(req):
 		result1 = urlopen(yql_url).read()
     		#data = json.loads(result1)
 		
-		speech="10.21 le previsioni meteo a "+city+" saranno a dispozione a breve"
+		speech="10.27 le previsioni meteo a "+city+" saranno a dispozione a breve"
 		res = makeWebhookResult(speech)
 		return res
 		
