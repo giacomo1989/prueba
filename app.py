@@ -150,6 +150,11 @@ def processRequest(req):
 		yql_url = baseurl + urllib.urlencode({'q':yql_query}) + "&format=json"
 		result1 = urlopen(yql_url).read()
     		data = json.loads(result1)
+		query = data.get('query')
+    		result2 = query.get('results')
+    		channel = result2.get('channel')
+    		item = channel.get('item')
+		date=item["forecast"][0].get("date")
 		
 					#NO FERITI
 		if req.get("result")["contexts"][0]["name"]=="domanda3":
