@@ -315,10 +315,12 @@ def processRequest(req):
 		result 		= req.get("result")
 		parameters 	= result.get("parameters")
 		city 		= parameters.get("geo-city") 
+		
 		baseurl = "https://query.yahooapis.com/v1/public/yql?"
 		yql_query = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text= '"+ city+"')"
+		yql_url = baseurl + urllib.urlencode({'q':yql_query}) + "&format=json"
 		
-		speech="10.07 le previsioni meteo a "+city+" saranno a dispozione a breve"
+		speech="10.11 le previsioni meteo a "+city+" saranno a dispozione a breve"
 		res = makeWebhookResult(speech)
 		return res
 		
