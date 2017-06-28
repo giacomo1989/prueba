@@ -161,6 +161,7 @@ def processRequest(req):
 			ass = 			req.get("result")["contexts"][2]["parameters"].get("assicurazione")
 			danni=			req.get("result")["contexts"][1]["parameters"].get("forniture-demage")
 
+			city="Barcelona"
 			baseurl = "https://query.yahooapis.com/v1/public/yql?"
 			yql_query = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text= '"+ city+"')"
 			yql_url = baseurl + urllib.urlencode({'q':yql_query}) + "&format=json"
