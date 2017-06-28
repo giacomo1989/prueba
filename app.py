@@ -335,97 +335,23 @@ def processRequest(req):
 		yql_url = baseurl + urllib.urlencode({'q':yql_query}) + "&format=json"
 		result1 = urlopen(yql_url).read()
     		data = json.loads(result1)
+		
 		query = data.get('query')
     		result2 = query.get('results')
     		channel = result2.get('channel')
     		item = channel.get('item')
-    		location = channel.get('location')
+    		date=item["forecast"][1].get("date")
+		location = channel.get('location')
     		units = channel.get('units')
     		condition = item.get('condition')
-    		
-		#gradi_farenheit=condition.get('temp')
-		#simbolo_gradi=units.get('temperature')
 		
 		celsius=int(condition.get('temp'))
 		Gc=int((celsius-32)/1.8)
        		
-		speech1 = "Today in " + location.get('city') + ": " + condition.get('text') + ", the temperature is " + str(Gc)+ " C"
+		speech1 = date+" Today in " + location.get('city') + ": " + condition.get('text') + ", the temperature is " + str(Gc)+ " C"
 		res = makeWebhookResult(speech1)
 		return res
 		
-		'''
-		baseurl = "https://query.yahooapis.com/v1/public/yql?"		
-		yql_query = makeYqlQuery1(req)
-    		yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
-    		result = urlopen(yql_url).read()
-    		data = json.loads(result)
-		
-		speech="le previsioni meteo saranno a dispozione a breve"
-		res = makeWebhookResult(speech)
-		return res
-	
-	
-		
-	#if req.get("result").get("action") != "yahooWeatherForecast":
-            	#return {}
-	if req.get("result").get("action") == "yahooWeatherForecast":
-	baseurl = "https://query.yahooapis.com/v1/public/yql?"		
-	yql_query = makeYqlQuery1(req)
-    	if yql_query is None:
-        	return {}
-    	yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
-    	result = urlopen(yql_url).read()
-    	data = json.loads(result)
-    	res1 = makeWebhookResult1(data)
-    	
-	speech="18.02 meteo prova"
-	res = makeWebhookResult(speech)
-		
-	return res
-	
-			
-def makeYqlQuery1(req):
-    result = req.get("result")
-    parameters = result.get("parameters")
-    city = parameters.get("geo-city")
-    if city is None:
-        return None
-
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
-
-#yahooh weather forecast
-def makeWebhookResult1(data):
-    query = data.get('query')
-    if query is None:
-        return {}
-
-    result = query.get('results')
-    if result is None:
-        return {}
-
-    channel = result.get('channel')
-    if channel is None:
-        return {}
-
-    item = channel.get('item')
-    location = channel.get('location')
-    units = channel.get('units')
-    if (location is None) or (item is None) or (units is None):
-        return {}
-
-    condition = item.get('condition')
-    if condition is None:
-        return {}
-
-    # print(json.dumps(item, indent=4))
-
-    speech1 = "Today in " + location.get('city') + ": " + condition.get('text') + \
-             ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
-
-    print("Response:")
-    print(speech1)
-    '''
-#fine yahoo weather forecast
 	
 def makeWebhookResult(speech):
     print("Response:")
