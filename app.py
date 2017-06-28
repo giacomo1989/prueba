@@ -321,7 +321,7 @@ def processRequest(req):
 		yql_url = baseurl + urllib.urlencode({'q':yql_query}) + "&format=json"
 		
 		speech="10.11 le previsioni meteo a "+city+" saranno a dispozione a breve"
-		res = makeWebhookResult(speech)
+		res = makeWebhookResult(yql_query)
 		return res
 		
 		'''
