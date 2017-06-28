@@ -1,16 +1,5 @@
 #!/usr/bin/env python
-'''
-from __future__ import print_function
-from future import standard_library
-standard_library.install_aliases()
-import urllib.request, urllib.parse, urllib.error
-import json
-import os
 
-from flask import Flask
-from flask import request
-from flask import make_response
-'''
 from __future__ import print_function
 from future.standard_library import install_aliases
 install_aliases()
@@ -28,8 +17,21 @@ from flask import make_response
 
 # Flask app should start in global layout
 app = Flask(__name__)
-
 '''
+from __future__ import print_function
+from future import standard_library
+standard_library.install_aliases()
+import urllib.request, urllib.parse, urllib.error
+import json
+import os
+
+from flask import Flask
+from flask import request
+from flask import make_response
+
+
+
+
 import apiai
 CLIENT_ACCESS_TOKEN = '9964b46aafa34cfd8b1a414b31abc819'
 PAGE_ACCESS_TOKEN = 'EAAODZBYcpPmkBAGtnxJ5FbERHR5hnBfbAvBeXTKGIefcNAzILPRz0cM8EACKnZCk4KEmxX5UnHP4WuC7CAFovMq8Fmosjl5PzsHHxCZCHTcSB134FuDWybuA9o4P7ZAIBo5RTHszaxn9gZC66O6adAtqgZAR18W8PGL8Gni9bOFAZDZD'
