@@ -333,7 +333,7 @@ def processRequest(req):
 		baseurl = "https://query.yahooapis.com/v1/public/yql?"
 		yql_query = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text= '"+ city+"')"
 		yql_url = baseurl + urllib.urlencode({'q':yql_query}) + "&format=json"
-		#result1 = urlopen(yql_url).read()
+		result1 = urlopen(yql_url).read()
     		#data = json.loads(result1)
 		
 		speech="11.38 le previsioni meteo a "+city+" saranno a dispozione a breve"
