@@ -13,7 +13,7 @@ import os
 from flask import Flask
 from flask import request
 
-from fbmq import Page
+#from fbmq import Page
 
 from flask import make_response
 
