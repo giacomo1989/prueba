@@ -8,7 +8,7 @@ from urllib.request import urlopen
 import json
 import os
 
-
+from django.views.decorators.csrf import csrf_exempt
 
 from flask import Flask
 from flask import request
@@ -224,7 +224,7 @@ def processRequest(req):
 		result1 = urlopen(baseurl).read()
 		data = json.loads(result1)
 		
-		speech="16.06 ok il collegamento e attivo "#+lat
+		speech="16.24 ok il collegamento e attivo "#+lat
 		res = makeWebhookResult(speech)
 		return res
 
