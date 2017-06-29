@@ -8,7 +8,7 @@ from urllib.request import urlopen
 import json
 import os
 
-
+from fbmq import Page
 
 from flask import Flask
 from flask import request
@@ -330,7 +330,7 @@ def processRequest(req):
 		result1 = urlopen(baseurl).read()
 		data = json.loads(result1)
 		
-		speech="11.40 ok il collegamento e attivo "#+lat
+		speech="11.50 ok il collegamento e attivo "#+lat
 		res = makeWebhookResult(speech)
 		return res
 
