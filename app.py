@@ -12,6 +12,9 @@ import os
 
 from flask import Flask
 from flask import request
+
+from fbmq import Page
+
 from flask import make_response
 
 # Flask app should start in global layout
@@ -330,7 +333,7 @@ def processRequest(req):
 		result1 = urlopen(baseurl).read()
 		data = json.loads(result1)
 		
-		speech="11.50 ok il collegamento e attivo "#+lat
+		speech="16.06 ok il collegamento e attivo "#+lat
 		res = makeWebhookResult(speech)
 		return res
 
