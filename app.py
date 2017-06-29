@@ -8,7 +8,7 @@ from urllib.request import urlopen
 import json
 import os
 
-from fbmq import Page
+
 
 from flask import Flask
 from flask import request
