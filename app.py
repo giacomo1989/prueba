@@ -19,114 +19,7 @@ from flask import make_response
 
 # Flask app should start in global layout
 app = Flask(__name__)
-'''
-import apiai
-CLIENT_ACCESS_TOKEN = '9964b46aafa34cfd8b1a414b31abc819'
-PAGE_ACCESS_TOKEN = 'EAAODZBYcpPmkBAGtnxJ5FbERHR5hnBfbAvBeXTKGIefcNAzILPRz0cM8EACKnZCk4KEmxX5UnHP4WuC7CAFovMq8Fmosjl5PzsHHxCZCHTcSB134FuDWybuA9o4P7ZAIBo5RTHszaxn9gZC66O6adAtqgZAR18W8PGL8Gni9bOFAZDZD'
-VERIFY_TOKEN = '9964b46aafa34cfd8b1a414b31abc819'
-ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
 
-access_token = 'EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD'
-
-
-@app.route('/', methods=['GET'])
-def handle_verification():
-    if (request.args.get('hub.verify_token', '') == VERIFY_TOKEN):
-        print("Verified")
-        return request.args.get('hub.challenge', '')
-    else:
-        print("Wrong token")
-        return "Error, wrong validation token"
-
-@app.route('/webhook', methods=['POST'])
-def webhook():
-    req = request.get_json(silent=True, force=True)
-
-  @app.route('/', methods=['POST'])
-def handle_message():
-   
-  #  Handle messages sent by facebook messenger to the applicaiton
-    
-    data = request.get_json()
-
-    if data["object"] == "page":
-        for entry in data["entry"]:
-            for messaging_event in entry["messaging"]:
-                if messaging_event.get("message"):
-
-                    sender_id = messaging_event["sender"]["id"]        
-                    recipient_id = messaging_event["recipient"]["id"]  
-                    message_text = messaging_event["message"]["text"]  
-                    send_message_response(sender_id, parse_natural_text(message_text))
-
-
-    return "ok"
-
-def send_message(sender_id, message_text):
-    
-  #  Sending response back to the user using facebook graph API
-    
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages",
-
-        params={"access_token": PAGE_ACCESS_TOKEN},
-
-        headers={"Content-Type": "application/json"},
-
-        data=json.dumps({
-        "recipient": {"id": sender_id},
-        "message": {"text": message_text}
-    }))
-	
-	def parse_user_text(user_text):
-
-    
-   # Send the message to API AI which invokes an intent
-   # and sends the response accordingly
-    #The bot response is appened with weaher data fetched from
-    #open weather map client
-    
-
-    request = ai.text_request()
-    request.query = user_text
-
-    response = json.loads(request.getresponse().read().decode('utf-8'))
-    responseStatus = response['status']['code']
-    if (responseStatus == 200):
-        print("Bot response", response['result']['fulfillment']['speech'])
-
-        weather_report = ''
-
-        input_city = response['result']['parameters']['geo-city']
-
-        #Fetching weather data
-        owm = pyowm.OWM('023231a7fc73d296d874874991856cfb')  # You MUST provide a valid API key
-
-        forecast = owm.daily_forecast(input_city)
-
-        observation = owm.weather_at_place(input_city)
-        w = observation.get_weather()
-        print(w)                      
-        print(w.get_wind())                 
-        print(w.get_humidity())      
-        max_temp = str(w.get_temperature('celsius')['temp_max'])  
-        min_temp = str(w.get_temperature('celsius')['temp_min'])
-        current_temp = str(w.get_temperature('celsius')['temp'])
-        wind_speed = str(w.get_wind()['speed'])
-        humidity = str(w.get_humidity())
-        weather_report = ' max temp: ' + max_temp + ' min temp: ' + min_temp + ' current temp: ' + current_temp + ' wind speed :' + wind_speed + ' humidity ' + humidity + '%'
-        print("Weather report ", weather_report)
-        return (response['result']['fulfillment']['speech'] + weather_report)
-    else:
-        return ("Please try again")
-
-
-def send_message_response(sender_id, message_text):
-    sentenceDelimiter = ". "
-    messages = message_text.split(sentenceDelimiter)
-
-    for message in messages:
-        send_message(sender_id, message)
-'''
 	
 	
 @app.route('/webhook', methods=['POST'])
@@ -220,9 +113,7 @@ def processRequest(req):
 			important="\n\n******** IMPORTANT ********\n\nThe schedule of the third part driver involved in the accident is:\n-NAME: "+name_other_driver+"\n-SURNAME: "+surname_other_driver+"\n-DATE OF BIRTH: "+datedriver2+"\n-LICENSE NUMBER: "+driver2_license_number+"\n-LICENSE PLATE NUMBER: "+driver2_license_plate+"\n-INSURANCE: "+ass
 			#injured=" vediamo se funziona."
 			injured="\n\n***** VERY IMPORTANT *****\n\nTHE PASSENGER: "+name_injured+" "+surname_injured+";\was injured in the "+part_injured+".\n"+name_injured+" found himself in "+seat+"."
-			#speech=" posizione 0 e "+req.get("result")["contexts"][0]["name"]+"\nposizione 1 "+req.get("result")["contexts"][1]["name"]+"\nposizione 2 "+req.get("result")["contexts"][2]["name"]+"\nposizione 3 "#+req.get("result")["contexts"][3]["name"]+"\nposizione 4 "+req.get("result")["contexts"][4]["name"]
-			#res = makeWebhookResult(speech)
-			#return res
+			
 						#SI POLIZIA
 			if len(req.get("result")["contexts"][0]["parameters"]) > 6:
 				Ndenuncia = 	req.get("result")["contexts"][2]["parameters"].get("complain-number")
@@ -368,15 +259,9 @@ def processRequest(req):
 		return res
 		
 	
-	
-	
-	
-	
 def makeWebhookResult(speech):
     print("Response:")
     print(speech)
-	
-
 	
     return {
         "speech": speech,
@@ -398,7 +283,7 @@ if __name__ == '__main__':
 
 
 '''
-CODICE CHE FUNZIONA PER L'APPLICAZIONE PIZZA.BCN IN API.AI
+			CODICE CHE FUNZIONA PER L'APPLICAZIONE PIZZA.BCN IN API.AI
 
 #!/usr/bin/env python
 
@@ -515,4 +400,116 @@ if __name__ == '__main__':
     print("Starting app on port %d" % port)
 
     app.run(debug=False, port=port, host='0.0.0.0')
-    '''
+   
+   
+   
+
+				altro progetto di prova
+
+import apiai
+CLIENT_ACCESS_TOKEN = '9964b46aafa34cfd8b1a414b31abc819'
+PAGE_ACCESS_TOKEN = 'EAAODZBYcpPmkBAGtnxJ5FbERHR5hnBfbAvBeXTKGIefcNAzILPRz0cM8EACKnZCk4KEmxX5UnHP4WuC7CAFovMq8Fmosjl5PzsHHxCZCHTcSB134FuDWybuA9o4P7ZAIBo5RTHszaxn9gZC66O6adAtqgZAR18W8PGL8Gni9bOFAZDZD'
+VERIFY_TOKEN = '9964b46aafa34cfd8b1a414b31abc819'
+ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
+
+access_token = 'EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD'
+
+
+@app.route('/', methods=['GET'])
+def handle_verification():
+    if (request.args.get('hub.verify_token', '') == VERIFY_TOKEN):
+        print("Verified")
+        return request.args.get('hub.challenge', '')
+    else:
+        print("Wrong token")
+        return "Error, wrong validation token"
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    req = request.get_json(silent=True, force=True)
+
+  @app.route('/', methods=['POST'])
+def handle_message():
+   
+  #  Handle messages sent by facebook messenger to the applicaiton
+    
+    data = request.get_json()
+
+    if data["object"] == "page":
+        for entry in data["entry"]:
+            for messaging_event in entry["messaging"]:
+                if messaging_event.get("message"):
+
+                    sender_id = messaging_event["sender"]["id"]        
+                    recipient_id = messaging_event["recipient"]["id"]  
+                    message_text = messaging_event["message"]["text"]  
+                    send_message_response(sender_id, parse_natural_text(message_text))
+
+
+    return "ok"
+
+def send_message(sender_id, message_text):
+    
+  #  Sending response back to the user using facebook graph API
+    
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages",
+
+        params={"access_token": PAGE_ACCESS_TOKEN},
+
+        headers={"Content-Type": "application/json"},
+
+        data=json.dumps({
+        "recipient": {"id": sender_id},
+        "message": {"text": message_text}
+    }))
+	
+	def parse_user_text(user_text):
+
+    
+   # Send the message to API AI which invokes an intent
+   # and sends the response accordingly
+    #The bot response is appened with weaher data fetched from
+    #open weather map client
+    
+
+    request = ai.text_request()
+    request.query = user_text
+
+    response = json.loads(request.getresponse().read().decode('utf-8'))
+    responseStatus = response['status']['code']
+    if (responseStatus == 200):
+        print("Bot response", response['result']['fulfillment']['speech'])
+
+        weather_report = ''
+
+        input_city = response['result']['parameters']['geo-city']
+
+        #Fetching weather data
+        owm = pyowm.OWM('023231a7fc73d296d874874991856cfb')  # You MUST provide a valid API key
+
+        forecast = owm.daily_forecast(input_city)
+
+        observation = owm.weather_at_place(input_city)
+        w = observation.get_weather()
+        print(w)                      
+        print(w.get_wind())                 
+        print(w.get_humidity())      
+        max_temp = str(w.get_temperature('celsius')['temp_max'])  
+        min_temp = str(w.get_temperature('celsius')['temp_min'])
+        current_temp = str(w.get_temperature('celsius')['temp'])
+        wind_speed = str(w.get_wind()['speed'])
+        humidity = str(w.get_humidity())
+        weather_report = ' max temp: ' + max_temp + ' min temp: ' + min_temp + ' current temp: ' + current_temp + ' wind speed :' + wind_speed + ' humidity ' + humidity + '%'
+        print("Weather report ", weather_report)
+        return (response['result']['fulfillment']['speech'] + weather_report)
+    else:
+        return ("Please try again")
+
+
+def send_message_response(sender_id, message_text):
+    sentenceDelimiter = ". "
+    messages = message_text.split(sentenceDelimiter)
+
+    for message in messages:
+        send_message(sender_id, message)
+'''
