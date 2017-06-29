@@ -323,7 +323,11 @@ def processRequest(req):
 		
 		#result = req.get("result")
 		#parameters = result.get("parameters")
-		speech="9.53 ok il collegamento e attivo "#+lat
+		
+		baseurl ="https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD"
+		result1 = urlopen(baseurl).read()
+		
+		speech="11.31 ok il collegamento e attivo "#+lat
 		res = makeWebhookResult(speech)
 		return res
 
@@ -332,7 +336,7 @@ def processRequest(req):
 		parameters 	= result.get("parameters")
 		city 		= parameters.get("geo-city") 
 		
-		baseurl ="https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD" 
+		 
 		
 		baseurl = "https://query.yahooapis.com/v1/public/yql?"
 		yql_query = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text= '"+ city+"')"
