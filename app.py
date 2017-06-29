@@ -8,8 +8,7 @@ from urllib.request import urlopen
 import json
 import os
 
-from fbmq import Attachment, Template, QuickReply, NotificationType
-from example.fbpage import page
+
 
 from flask import Flask
 from flask import request
