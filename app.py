@@ -222,16 +222,16 @@ def processRequest(req):
 		
 		aa="https://graph.facebook.com/v2.6/<USER_ID>?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD"
 		result2 = urlopen(aa).read()
-		data = json.loads(result2)
+		data1 = json.loads(result2)
 		
 		
 		baseurl ="https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD"
 		result1 = urlopen(baseurl).read()
 		data = json.loads(result1)
 		
-		nome=data.get("first_name")
+		nome=data1.get("first_name")
 		
-		speech="18.00 ok il collegamento e attivo "+name#+lat
+		speech="18.00 ok il collegamento e attivo "+nome#+lat
 		res = makeWebhookResult(speech)
 		return res
 
