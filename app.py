@@ -8,6 +8,9 @@ from urllib.request import urlopen
 import json
 import os
 
+from fbmq import Attachment, Template, QuickReply, NotificationType
+from example.fbpage import page
+
 from flask import Flask
 from flask import request
 from flask import make_response
@@ -326,8 +329,9 @@ def processRequest(req):
 		
 		baseurl ="https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD"
 		result1 = urlopen(baseurl).read()
+		data = json.loads(result1)
 		
-		speech="11.31 ok il collegamento e attivo "#+lat
+		speech="11.40 ok il collegamento e attivo "#+lat
 		res = makeWebhookResult(speech)
 		return res
 
