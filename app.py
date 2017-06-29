@@ -8,7 +8,7 @@ from urllib.request import urlopen
 import json
 import os
 
-from django.views.decorators.csrf import csrf_exempt
+
 
 from flask import Flask
 from flask import request
