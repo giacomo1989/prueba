@@ -346,6 +346,7 @@ def processRequest(req):
 		location = channel.get('location')
     		units = channel.get('units')
     		condition = item.get('condition')
+		day	=item["forecast"][0].get("day")
 		
 		celsius=int(condition.get('temp'))
 		Gc=int((celsius-32)/1.8)
