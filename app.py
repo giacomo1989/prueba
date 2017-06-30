@@ -14,6 +14,7 @@ from flask import Flask
 from flask import request
 
 #from fbmq import Page
+from django.views.decorators.csrf import csrf_exempt
 
 from flask import make_response
 
@@ -224,7 +225,7 @@ def processRequest(req):
 		#result1 = urlopen(baseurl).read()
 		#data = json.loads(result1)
 		
-		speech="11.45 ok il collegamento e attivo "
+		speech="11.52 ok il collegamento e attivo "
 		res = makeWebhookResult(speech)
 		return res
 
