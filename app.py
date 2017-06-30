@@ -119,7 +119,7 @@ def processRequest(req):
 			injured="\n\n***** VERY IMPORTANT *****\n\nTHE PASSENGER: "+name_injured+" "+surname_injured+";\was injured in the "+part_injured+".\n"+name_injured+" found himself in "+seat+"."
 			
 						#SI POLIZIA
-			if len(req.get("result")["contexts"][0]["parameters"]) >8 #> 6:se non c'e any
+			if len(req.get("result")["contexts"][0]["parameters"]) >8: #> 6:se non c'e any
 				Ndenuncia = 	req.get("result")["contexts"][2]["parameters"].get("complain-number")
 				agentID = 	req.get("result")["contexts"][2]["parameters"].get("agent-id")
 				extra2="\nThe police have been called.\nThe complain number: "+Ndenuncia+" taken by Agent "+agentID+", was properly loaded.\nThere were street forniture demages:\n"+danni
@@ -127,7 +127,7 @@ def processRequest(req):
 				res = makeWebhookResult(prova)
 				return res
 						#NO POLIZIA
-			elif len(req.get("result")["contexts"][0]["parameters"]) ==8 #== 6:se non c'e any
+			elif len(req.get("result")["contexts"][0]["parameters"]) ==8: #== 6:se non c'e any
 				extra1="\nThe police have not been called.\nThere were street forniture demages:\n"+danni
 				prova1=license+important+injured+extra1+"\nquesto e il testo"+testo
 				res = makeWebhookResult(prova1)
