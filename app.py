@@ -7,14 +7,15 @@ import urllib.request, urllib.parse, urllib.error
 from urllib.request import urlopen
 import json
 import os
-import requests
+
 
 
 from flask import Flask
 from flask import request
 
 #from fbmq import Page
-from django.views.decorators.csrf import csrf_exempt
+#import requests
+#from django.views.decorators.csrf import csrf_exempt
 
 from flask import make_response
 
