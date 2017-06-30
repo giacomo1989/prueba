@@ -220,11 +220,11 @@ def processRequest(req):
 		#result = req.get("result")
 		#parameters = result.get("parameters")
 		
-		baseurl ="https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD"
+		baseurl ="https://graph.facebook.com/me/messages?access_token=EAAODZBYcpPmkBAEj9EVraapZA3US5ZCo9A084X8AT8hqOiPRcUpecq7SLzEyvJKbibIjn8nLTtvUwCBmLOJQu7j8nIUEVGYX9D94PkDJ50ZCT5k0wUguYNQx3zgvs9ZATHmxOwFXn5snFR10rnwdxKXsyHdGV7bUXkYgrzWecMgZDZD"
 		result1 = urlopen(baseurl).read()
 		data = json.loads(result1)
 		
-		speech="18.00 ok il collegamento e attivo "
+		speech="10.45 ok il collegamento e attivo "
 		res = makeWebhookResult(speech)
 		return res
 
