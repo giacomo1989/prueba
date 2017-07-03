@@ -138,6 +138,7 @@ def processRequest(req):
 	if req.get("result").get("action") == "forniture-demage.forniture-demage-no":
 		result = req.get("result")
 		parameters = result.get("parameters")
+		testo=parameters.get("any")
 					#NO FERITI
 		if req.get("result")["contexts"][0]["name"]=="domanda3":
 			licenseplate = 		req.get("result")["contexts"][2]["parameters"].get("number-sequence")
@@ -163,13 +164,13 @@ def processRequest(req):
 				agentID = 	req.get("result")["contexts"][1]["parameters"].get("agent-id")
 				extra2="\nThere were not injured.\nThe police have been called.\nThe complain number: "+Ndenuncia+" taken by Agent "+agentID+", was properly loaded.\nThere were not street forniture demages."
 				#prova="11.51 "+str(len(req.get("result")["contexts"][1]["parameters"]))+license+important+extra2
-				prova=license+important+extra2
+				prova=license+important+extra2+"\n\n******* DECLARATION *******\n\nThis is your personal declaration about the accident::\n"+testo
 				res = makeWebhookResult(prova)
 				return res
 						#NO POLIZIA
 			elif len(req.get("result")["contexts"][1]["parameters"])==2:# == 0:
 				extra1="\nThere were not injured.\nThe police have not been called.\nThere were not street forniture demages."
-				prova1=license+important+extra1
+				prova1=license+important+extra1+"\n\n******* DECLARATION *******\n\nThis is your personal declaration about the accident::\n"+testo
 				res = makeWebhookResult(prova1)
 				return res
 					#SI FERITI
@@ -202,13 +203,13 @@ def processRequest(req):
 				Ndenuncia = 	req.get("result")["contexts"][2]["parameters"].get("complain-number")
 				agentID = 	req.get("result")["contexts"][2]["parameters"].get("agent-id")
 				extra2="\nThe police have been called.\nThe complain number: "+Ndenuncia+" taken by Agent "+agentID+", was properly loaded.\nThere were not street forniture demages."
-				prova=license+important+injured+extra2
+				prova=license+important+injured+extra2+"\n\n******* DECLARATION *******\n\nThis is your personal declaration about the accident::\n"+testo
 				res = makeWebhookResult(prova)
 				return res
 						#NO POLIZIA
 			elif len(req.get("result")["contexts"][0]["parameters"]) == 6: #== 4:
 				extra1="\nThe police have not been called.\nThere were not street forniture demages."
-				prova1=license+important+injured+extra1
+				prova1=license+important+injured+extra1+"\n\n******* DECLARATION *******\n\nThis is your personal declaration about the accident::\n"+testo
 				res = makeWebhookResult(prova1)
 				return res
 	
