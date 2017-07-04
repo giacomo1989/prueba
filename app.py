@@ -75,7 +75,7 @@ def processRequest(req):
 			danni=			req.get("result")["contexts"][1]["parameters"].get("forniture-demage")
 			testo=			req.get("result")["contexts"][1]["parameters"].get("any")
 			
-			license = day+", "+date+"\n\nDear costumer, the REPORT of you car accident, with these details:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss+"\nhas been correct registered.\n\nPlease use claim no. 12345 for reference" 
+			license = day+", "+date+"\n\nDear costumer this is the REPORT of you car accident:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss+"\nhas been correct registered.\n\nPlease use claim no. 12345 for reference" 
 			important="\n\n******** IMPORTANT ********\n\nThe schedule of the third part driver involved in the accident is:\n-NAME: "+name_other_driver+"\n-SURNAME: "+surname_other_driver+"\n-DATE OF BIRTH: "+datedriver2+"\n-LICENSE NUMBER: "+driver2_license_number+"\n-LICENSE PLATE NUMBER: "+driver2_license_plate+"\n-INSURANCE: "+ass
 			#funziona posizione=" posizione 0 e "+req.get("result")["contexts"][0]["name"]+"\nposizione 1 "+req.get("result")["contexts"][1]["name"]+ "posizione 2 "+req.get("result")["contexts"][2]["name"]+" facciamo prova e vediamo se alcuni dati inseriti vanno bene "+name_other_driver+" "+surname_other_driver+" "+cityloss
 						#SI POLIZIA
@@ -113,10 +113,10 @@ def processRequest(req):
 			part_injured = 		req.get("result")["contexts"][4]["parameters"].get("injury-part")
 			seat = 			req.get("result")["contexts"][4]["parameters"].get("seat-position")
 			
-			license =day+", "+date+"\n\nDear costumer, the REPORT of you car accident, with these details:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss+"\nhas been correct registered.\n\nPlease use claim no. 12345 for reference" 
+			license =day+", "+date+"\n\nDear costumer this is the REPORT of you car accident:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss+"\nhas been correct registered.\n\nPlease use claim no. 12345 for reference" 
 			important="\n\n******** IMPORTANT ********\n\nThe schedule of the third part driver involved in the accident is:\n-NAME: "+name_other_driver+"\n-SURNAME: "+surname_other_driver+"\n-DATE OF BIRTH: "+datedriver2+"\n-LICENSE NUMBER: "+driver2_license_number+"\n-LICENSE PLATE NUMBER: "+driver2_license_plate+"\n-INSURANCE: "+ass
 			#injured=" vediamo se funziona."
-			injured="\n\n***** VERY IMPORTANT *****\n\nTHE PASSENGER: "+name_injured+" "+surname_injured+";was injured in the "+part_injured+".\n"+name_injured+" found himself in "+seat+"."
+			injured="\n\n***** VERY IMPORTANT *****\n\nTHE PASSENGER: "+name_injured+" "+surname_injured+" was injured in the "+part_injured+".\n"+name_injured+" found himself in "+seat+"."
 			
 						#SI POLIZIA
 			if len(req.get("result")["contexts"][0]["parameters"]) >8: #> 6:se non c'e any
@@ -152,7 +152,7 @@ def processRequest(req):
 			driver2_license_plate = req.get("result")["contexts"][2]["parameters"].get("license-plate")
 			ass = 			req.get("result")["contexts"][2]["parameters"].get("assicurazione")
 
-			license = day+", "+date+"\n\nDear costumer, the claim of you car accident, with these details:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss+"\nhas been correct registered.\n\nPlease use claim no. 12345 for reference" 
+			license = day+", "+date+"\n\nDear costumer this is the REPORT of you car accident:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss+"\nhas been correct registered.\n\nPlease use claim no. 12345 for reference" 
 			important="\n\n******** IMPORTANT ********\n\nThe schedule of the third part driver involved in the accident is:\n-NAME: "+name_other_driver+"\n-SURNAME: "+surname_other_driver+"\n-DATE OF BIRTH: "+datedriver2+"\n-LICENSE NUMBER: "+driver2_license_number+"\n-LICENSE PLATE NUMBER: "+driver2_license_plate+"\n-INSURANCE: "+ass
 
 			#speech=" posizione 0 e "+req.get("result")["contexts"][0]["name"]+"\nposizione 1 "+req.get("result")["contexts"][1]["name"]+"\nposizione 2 "+req.get("result")["contexts"][2]["name"]+"\nposizione 3 "#+req.get("result")["contexts"][3]["name"]+"\nposizione 4 "+req.get("result")["contexts"][4]["name"]
@@ -191,10 +191,10 @@ def processRequest(req):
 			part_injured = 		req.get("result")["contexts"][4]["parameters"].get("injury-part")
 			seat = 			req.get("result")["contexts"][4]["parameters"].get("seat-position")
 			
-			license = day+", "+date+"\n\nDear costumer, the claim of you car accident, with these details:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss+"\nhas been correct registered.\n\nPlease use claim no. 12345 for reference" 
+			license = day+", "+date+"\n\nDear costumer this is the REPORT of you car accident:\n-LICENSE PLATE NUMBER: "+licenseplate+"\n-DATE OF THE ACCIDENT: "+dateloss+"\n-TIME OF THE ACCIDENT: "+timeloss+"\n-PLACE OF THE ACCIDENT: "+cityloss+"\nhas been correct registered.\n\nPlease use claim no. 12345 for reference" 
 			important="\n\n******** IMPORTANT ********\n\nThe schedule of the third part driver involved in the accident is:\n-NAME: "+name_other_driver+"\n-SURNAME: "+surname_other_driver+"\n-DATE OF BIRTH: "+datedriver2+"\n-LICENSE NUMBER: "+driver2_license_number+"\n-LICENSE PLATE NUMBER: "+driver2_license_plate+"\n-INSURANCE: "+ass
 			#injured=" vediamo se funziona."
-			injured="\n\n***** VERY IMPORTANT *****\n\nTHE PASSENGER: "+name_injured+" "+surname_injured+";\nwas injured in the "+part_injured+".\n"+name_injured+" found himself in "+seat+"."
+			injured="\n\n***** VERY IMPORTANT *****\n\nTHE PASSENGER: "+name_injured+" "+surname_injured+" was injured in the "+part_injured+".\n"+name_injured+" found himself in "+seat+"."
 			#speech=" posizione 0 e "+req.get("result")["contexts"][0]["name"]+"\nposizione 1 "+req.get("result")["contexts"][1]["name"]+"\nposizione 2 "+req.get("result")["contexts"][2]["name"]+"\nposizione 3 "#+req.get("result")["contexts"][3]["name"]+"\nposizione 4 "+req.get("result")["contexts"][4]["name"]
 			#res = makeWebhookResult(speech)
 			#return res
