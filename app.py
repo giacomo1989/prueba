@@ -255,11 +255,13 @@ def processRequest(req):
     		units = channel.get('units')
     		condition = item.get('condition')
 		day	=item["forecast"][0].get("day")
+		atm	= channel.get('atmosphere')
+		umidita = channel.get('humidity')
 		
 		celsius=int(condition.get('temp'))
 		Gc=int((celsius-32)/1.8)
        		
-		speech1 =day+", "+date+"\n\nToday : in " + location.get('city') + ": " + condition.get('text') + ", the temperature is " + str(Gc)+ " C"
+		speech1 =day+", "+date+"\n\nToday : in " + location.get('city') + ": " + condition.get('text') + ", the temperature is " + str(Gc)+ " C, with a humidity of "+umidita+"%"
 		res = makeWebhookResult(speech1)
 		return res
 		
