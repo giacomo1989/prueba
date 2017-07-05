@@ -256,7 +256,7 @@ def processRequest(req):
     		condition = item.get('condition')
 		day	=item["forecast"][0].get("day")
 		atm	= channel.get('atmosphere')
-		umidita = channel.get('humidity')
+		umidita = atm.get('humidity')
 		
 		celsius=int(condition.get('temp'))
 		Gc=int((celsius-32)/1.8)
