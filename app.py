@@ -1,3 +1,4 @@
+'''
 #!/usr/bin/env python
 
 from __future__ import print_function
@@ -287,10 +288,10 @@ if __name__ == '__main__':
     app.run(debug=False, port=port, host='0.0.0.0')
 
 
-
-
 '''
-			CODICE CHE FUNZIONA PER L'APPLICAZIONE PIZZA.BCN IN API.AI
+
+
+			#CODICE CHE FUNZIONA PER L'APPLICAZIONE PIZZA.BCN IN API.AI
 
 #!/usr/bin/env python
 
@@ -409,7 +410,7 @@ if __name__ == '__main__':
     app.run(debug=False, port=port, host='0.0.0.0')
    
    
-   
+   '''
 
 				altro progetto di prova
 
