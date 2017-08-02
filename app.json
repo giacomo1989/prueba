@@ -3,4 +3,7 @@
   "description": "API.AI webhook demonstration",
   "repository": "https://github.com/tyrex8/prueba",
   "keywords": ["api.ai", "natural language"]
+  "dependencies": {
+    "actions-on-google": "^1.0.0"
+  }
 }
